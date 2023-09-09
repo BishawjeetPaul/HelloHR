@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="home">
+    <!-- top-banner -->
+  <div class="top" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+    
+    <div class="top-banner">
+      <img src="{% static './assets/images/banner1.jpg' %}" alt="" class="img-fluid w-100">
+      <div class="top-container d-flex flex-column pl-5">
+        <h1>
+          Headline
+        </h1>
+        <p>
+          Description
+        </p>
+
+        <div>
+          <a href="">
+            <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
+              Learn More
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-banner">
+        <img src="{% static './assets/images/banner2.jpg' %}" alt="" class="img-fluid w-100">
+        <div class="top-container d-flex flex-column pl-5">
+          <h1>
+            Headline
+          </h1>
+          <p>
+            Description
+          </p>
+  
+          <div>
+            <a href="">
+              <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
+                Learn More
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="top-banner">
+        <img src="{% static './assets/images/banner3.jpg' %}" alt="" class="img-fluid w-100">
+        <div class="top-container d-flex flex-column pl-5">
+          <h1>
+            Headline
+          </h1>
+          <p>
+            Description
+          </p>
+  
+          <div>
+            <a href="">
+              <button class="btn btn-accent pl-3 pr-3 text-capitalize font-weight-bold">
+                Learn More
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    
+
+  </div>
+</main>
+
+{% endblock %}

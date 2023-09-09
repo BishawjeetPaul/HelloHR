@@ -37,7 +37,7 @@ class StaffHR(models.Model):
 
 
 
-class Freelancer(models.Modal):
+class Freelancer(models.Model):
     GENDER = (
         ('M', 'M'), # Male
         ('F', 'F'), # Female
@@ -55,7 +55,7 @@ class Freelancer(models.Modal):
     objects = models.Manager()
 
 
-class CompanyHR(models.Modal):
+class CompanyHR(models.Model):
     GENDER = (
         ('M', 'M'), # Male
         ('F', 'F'), # Female
