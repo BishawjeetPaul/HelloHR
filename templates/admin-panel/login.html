@@ -18,7 +18,7 @@
       </div>
         
       
-      <form method="POST" action="{% url 'login' %}" class="col-md-5 offset-1">
+      <form method="POST" action="/doLogin" class="col-md-5 offset-1">
           {% csrf_token %}
         <div class="form-group">
           <input name="username" type="text" class="form-control" placeholder="User Name" required>
