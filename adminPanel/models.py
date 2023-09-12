@@ -1,11 +1,11 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser # Use to create customuser.
 from django.db import models
-from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.dispatch import receiver # Use to create receiver to a signals.
+from django.db.models.signals import post_save # Use to save signals.
 
 
 
-
+# For user type.
 class CustomUser(AbstractUser):
     user_type_data = ((1,'Admin'),(2,'Staff'), (3,'Freelancer'), (4, 'CompanyHR'))
     create_type_data = ((1, 'OWN'),(2, 'Admin'))
@@ -14,7 +14,7 @@ class CustomUser(AbstractUser):
     isDelete = models.BooleanField(default=False)
 
 
-
+# For Admin.
 class AdminHOD(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
@@ -23,7 +23,27 @@ class AdminHOD(models.Model):
     objects = models.Manager()
 
 
+# For CompanyHR.
+class CompanyHR(models.Model):
+    GENDER = (
+        ('M', 'M'), # Male
+        ('F', 'F'), # Female
+        ('O', 'O'), # Other
+    )
+    id = models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    gender = models.CharField(max_length=1, null=True, choices=GENDER)
+    profile_pic = models.FileField(default='avatar.png', upload_to='companyHR/')
+    address = models.TextField()
+    password = models.CharField(max_length=15)
+    isDelete = models.BooleanField(default=False)
+    birth_date = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
+
+# For Staffs.
 class Staffs(models.Model):
     GENDER = (
         ('M', 'M'), # Male
@@ -34,15 +54,17 @@ class Staffs(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     mobile_no = models.CharField(max_length=10)
     gender = models.CharField(max_length=1, null=True, choices=GENDER)
-    profile_pic = models.FileField(default='avatar.png', upload_to='avatars/staff/')
+    profile_pic = models.FileField(default='avatar.png', upload_to='staff/')
     address = models.TextField()
+    password = models.CharField(max_length=15)
     isDelete = models.BooleanField(default=False)
+    birth_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
 
-
+# For Freelancer.
 class Freelancer(models.Model):
     GENDER = (
         ('M', 'M'), # Male
@@ -52,34 +74,21 @@ class Freelancer(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     mobile_no = models.CharField(max_length=10)
+    unique_user_id = models.CharField(max_length=64, unique=True)
     gender = models.CharField(max_length=1, null=True, choices=GENDER)
-    profile_pic = models.FileField(default='avatar.png', upload_to='avatars/staff/')
+    profile_pic = models.FileField(default='avatar.png', upload_to='freelancer/')
     address = models.TextField()
+    password = models.CharField(max_length=15)
     isDelete = models.BooleanField(default=False)
+    birth_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
 
 
 
-class CompanyHR(models.Model):
-    GENDER = (
-        ('M', 'M'), # Male
-        ('F', 'F'), # Female
-        ('O', 'O'), # Other
-    )
-    id = models.AutoField(primary_key=True)
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    gender = models.CharField(max_length=1, null=True, choices=GENDER)
-    profile_pic = models.FileField(default='avatar.png', upload_to='avatars/staff/')
-    address = models.TextField()
-    isDelete = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
-    objects = models.Manager()
 
-
-
+# This for create user type account automatically.
 @receiver(post_save, sender=CustomUser)
 def create_user_profile(sender,instance,created,**kwargs):
     if created:
@@ -91,7 +100,8 @@ def create_user_profile(sender,instance,created,**kwargs):
                 address="",
                 mobile_no="",
                 profile_pic="",
-                gender=""
+                gender="",
+                password=""
             )
         if instance.user_type==3:
             Freelancer.objects.create(
@@ -99,7 +109,8 @@ def create_user_profile(sender,instance,created,**kwargs):
                 address="",
                 mobile_no="",
                 profile_pic="",
-                gender=""
+                gender="",
+                password=""
             )
         if instance.user_type==4:
             CompanyHR.objects.create(
@@ -107,9 +118,12 @@ def create_user_profile(sender,instance,created,**kwargs):
                 address="",
                 mobile_no="",
                 profile_pic="",
-                gender=""
+                gender="",
+                password=""
             )
 
+
+# This for save create user type account automatically.
 @receiver(post_save,sender=CustomUser)
 def save_user_profile(sender,instance,**kwargs):
     if instance.user_type==1:
