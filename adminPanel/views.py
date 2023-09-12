@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required # Login required to access private pages.
+from django.views.decorators.cache import cache_control # Destroy the section after logout.
+from adminPanel.EmailBackEnd import EmailBackEnd
 
 
 
 # Create your views here.
+@login_required(login_url="login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def dashboard(request):
     return render(request, 'admin-panel/dashboard.html')
 
@@ -17,10 +22,10 @@ def doLogin(request):
     if request.method!="POST":
         return HttpResponse("<h2>Method Not Allowed</h2>")
     else:
-        username=request.POST.get('username')
+        email=request.POST.get('email')
         password=request.POST.get('password')
         
-        user=authenticate(request, username=username, password=password)
+        user=EmailBackEnd.authenticate(request, username=email, password=password)
         if user is not None:
             login(request,user)
             return HttpResponseRedirect("/adminPanel/dashboard/")

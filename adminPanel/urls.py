@@ -9,23 +9,25 @@ urlpatterns = [
 	path('login/',views.login_page, name='login'),
     # path to create CompanyHR account page.
     path('create/companyHR/',adminViews.add_company_hr, name='add-company-hr'),
+    # path to manage CompanyHR account page.
+    path('manage/companyHR/', adminViews.manage_company_hr, name='manage-compay-hr'),
     # path to update CompanyHR account page.
-    path('update/companyHR/', adminViews.update_company_hr, name='update-company-hr'),
+    path('update/companyHR/<str:hr_id>/', adminViews.update_company_hr, name='update-company-hr'),
     # path to create Staff account page.
     path('create/staff/',adminViews.add_staff, name='add-staff'),
     # path to update Staff account page.
-    path('update/staff/', adminViews.update_staff, name='update-staff'),
+    path('update/staff/<str:staff_id>/', adminViews.update_staff, name='update-staff'),
     # path to create Freelancer account page.
     path('create/freelancer/',adminViews.add_freelancer, name='add-freelancer'),
     # path to update Freelancer account page.
-    path('update/freelancer/', adminViews.update_freelancer, name='update-freelancer'),
+    path('update/freelancer/<str:freelancer_id>/', adminViews.update_freelancer, name='update-freelancer'),
     # --------------- BACKEND --------------- |
     # path to save CompanyHR account.
-    path('save/companyHR/', adminViews.update_company_hr, name='save-company-hr'),
+    path('save/companyHR/', adminViews.save_company_hr, name='save-company-hr'),
     # path to save update CompanyHR account.
-    path('save/update/companyHR/', adminViews.update_company_hr, name='save-update-company-hr'),
+    path('save/update/companyHR/', adminViews.save_update_company_hr, name='save-update-company-hr'),
     # path to delete CompanyHR account.
-    path('delete/companyHR/', adminViews.update_company_hr, name='delete-company-hr'),
+    path('delete/companyHR/<str:hr_id>/', adminViews.soft_delete_company_hr, name='delete-company-hr'),
     # path to save Staff account.
     path('save/staff/', adminViews.save_staff, name='save-staff'),
     # path to save update Staff account.

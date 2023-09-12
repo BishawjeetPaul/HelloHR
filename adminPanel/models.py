@@ -7,7 +7,7 @@ from django.db.models.signals import post_save # Use to save signals.
 
 # For user type.
 class CustomUser(AbstractUser):
-    user_type_data = ((1,'Admin'),(2,'Staff'), (3,'Freelancer'), (4, 'CompanyHR'))
+    user_type_data = ((1,'Admin'),(2,'CompanyHR'), (3,'Staff'), (4, 'Freelancer'))
     create_type_data = ((1, 'OWN'),(2, 'Admin'))
     user_type = models.CharField(default=1, choices=user_type_data, max_length=10)
     create_type = models.CharField(default=1, choices=create_type_data, max_length=10)
@@ -32,6 +32,8 @@ class CompanyHR(models.Model):
     )
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    hr_email = models.CharField(max_length=30)
+    mobile_no = models.CharField(max_length=10)
     gender = models.CharField(max_length=1, null=True, choices=GENDER)
     profile_pic = models.FileField(default='avatar.png', upload_to='companyHR/')
     address = models.TextField()
@@ -52,6 +54,7 @@ class Staffs(models.Model):
     )
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    staff_email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
     gender = models.CharField(max_length=1, null=True, choices=GENDER)
     profile_pic = models.FileField(default='avatar.png', upload_to='staff/')
@@ -73,6 +76,7 @@ class Freelancer(models.Model):
     )
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    freelancer_email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
     unique_user_id = models.CharField(max_length=64, unique=True)
     gender = models.CharField(max_length=1, null=True, choices=GENDER)
@@ -95,6 +99,16 @@ def create_user_profile(sender,instance,created,**kwargs):
         if instance.user_type==1:
             AdminHOD.objects.create(admin=instance)
         if instance.user_type==2:
+            CompanyHR.objects.create(
+                admin=instance,
+                hr_email="",
+                address="",
+                mobile_no="",
+                profile_pic="",
+                gender="",
+                password=""
+            )
+        if instance.user_type==3:
             Staffs.objects.create(
                 admin=instance,
                 address="",
@@ -103,17 +117,8 @@ def create_user_profile(sender,instance,created,**kwargs):
                 gender="",
                 password=""
             )
-        if instance.user_type==3:
-            Freelancer.objects.create(
-                admin=instance,
-                address="",
-                mobile_no="",
-                profile_pic="",
-                gender="",
-                password=""
-            )
         if instance.user_type==4:
-            CompanyHR.objects.create(
+            Freelancer.objects.create(
                 admin=instance,
                 address="",
                 mobile_no="",
@@ -129,8 +134,8 @@ def save_user_profile(sender,instance,**kwargs):
     if instance.user_type==1:
         instance.adminhod.save()
     if instance.user_type==2:
-        instance.staffs.save()
-    if instance.user_type==3:
-        instance.freelancer.save()
-    if instance.user_type==4:
         instance.companyhr.save()
+    if instance.user_type==3:
+        instance.staff.save()
+    if instance.user_type==4:
+        instance.freelancer.save()
