@@ -4,8 +4,8 @@
     <ul class="vertical-nav-menu">
         <li class="app-sidebar__heading">Dashboards</li>
         <li>
-            <a href="index.html" class="mm-active">
-                <i class="metismenu-icon pe-7s-rocket"></i>
+            <a href="{% url "dashboard" %}" class="mm-active">
+                
                 My Dashboard
             </a>
         </li>
@@ -13,20 +13,20 @@
             Users
         </li>
         <li>
-            <a href="tables-regular.html">
-                <i class="metismenu-icon pe-7s-display2"></i>
+            <a href="{% url "create_user" %}">
+                
                 Create Admin User
             </a>
         </li>
         <li>
             <a href="tables-regular.html">
-                <i class="metismenu-icon pe-7s-display2"></i>
+                
                 Create Staff User
             </a>
         </li>
         <li>
             <a href="tables-regular.html">
-                <i class="metismenu-icon pe-7s-display2"></i>
+                
                 Create HR User
             </a>
         </li>

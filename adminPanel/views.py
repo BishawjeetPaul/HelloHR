@@ -38,3 +38,7 @@ def GetUserDetail(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/adminPanel/login/')
+
+
+def create_user(request):
+    return render(request, 'admin-panel/account/create-user.html')
