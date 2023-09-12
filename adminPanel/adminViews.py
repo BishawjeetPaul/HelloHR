@@ -196,28 +196,79 @@ def save_staff(request):
         except:
             messages.error(request, "Failed to Added Staff")
             return HttpResponseRedirect("/adminPanel/create/staff/")
-            
+
+
+# Function to manage Staff account.
+@login_required(login_url="login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def manage_staff(request):
+    staffs = Staffs.objects.all()
+    context = {
+        'staffs': staffs,
+    }
+    return render(request, 'admin-panel/staff/manage-staff.html', context)
 
 
 # Function to update page Staff account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
-def update_staff(request):
-    return render(request, 'admin-panel/update-staff.html')
+def update_staff(request, staff_id):
+    staff = CompanyHR.objects.get(admin=staff_id)
+    context = {
+        'staff': staff,
+        'id': staff_id,
+    }
+    return render(request, 'admin-panel/staff/update-staff.html')
 
 
 # Function to save update Staff account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_update_staff(request):
-    pass
+    if request.method == 'POST':
+        staff_id = request.POST.get('staff_id')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        mobile_no = request.POST.get('mobile_no')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+        password = request.POST.get('password')
+        birth_date = request.POST.get('birth_date')
+
+        try:
+            user = CustomUser.objects.get(id=staff_id)
+            user.first_name = first_name
+            user.last_name = last_name
+            user.username = username
+            user.password = password
+            user.save()
+
+            staff_model = Staffs.objects.get(admin=staff_id)
+            staff_model.staff_email=email
+            staff_model.mobile_no=mobile_no
+            staff_model.password=password
+            staff_model.address=address
+            staff_model.gender=gender
+            staff_model.birth_date=birth_date
+            staff_model.save()
+            messages.success(request, 'Successfully updated Staff')
+            return HttpResponseRedirect('/adminPanel/update/staff/'+staff_id)
+        except:
+            messages.error(request, "Failed to updated Staff")
+            return HttpResponseRedirect("/adminPanel/update/staff/"+staff_id)
 
 
 # Function to soft delete Staff account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
-def soft_delete_staff(request):
-    pass
+def soft_delete_staff(request, staff_id):
+    staff = Staffs.objects.get(admin=staff_id)
+    staff.isDelete=True
+    staff.save()
+    messages.success(request, 'Staff Deleted Successfully')
+    return HttpResponseRedirect('/adminPanel/manage/staff/')
 
 
 # Function to create page Freelancer account.
@@ -278,11 +329,26 @@ def save_freelancer(request):
             return HttpResponseRedirect("/adminPanel/create/freelancer/")
             
 
+# Function to manage Freelancer account.
+@login_required(login_url="login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def manage_freelancer(request):
+    freelancer = Freelancer.objects.all()
+    context = {
+        'freelancers': freelancer,
+    }
+    return render(request, 'admin-panel/staff/manage-freelancer.html', context)
+
 
 # Function to update page Freelancer account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
-def update_freelancer(request):
+def update_freelancer(request, freelancer_id):
+    freelancer = Freelancer.objects.get(admin=freelancer_id)
+    context = {
+        'freelancer': freelancer,
+        'id': freelancer,
+    }
     return render(request, 'admin-panel/update-freelancer.html')
 
 
@@ -290,11 +356,47 @@ def update_freelancer(request):
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_update_freelancer(request):
-    pass
+    if request.method == 'POST':
+        freelancer_id = request.POST.get('freelancer_id')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        mobile_no = request.POST.get('mobile_no')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+        password = request.POST.get('password')
+        birth_date = request.POST.get('birth_date')
+
+        try:
+            user = CustomUser.objects.get(id=freelancer_id)
+            user.first_name = first_name
+            user.last_name = last_name
+            user.username = username
+            user.password = password
+            user.save()
+
+            freelancer_model = Freelancer.objects.get(admin=freelancer_id)
+            freelancer_model.freelancer_email=email
+            freelancer_model.mobile_no=mobile_no
+            freelancer_model.password=password
+            freelancer_model.address=address
+            freelancer_model.gender=gender
+            freelancer_model.birth_date=birth_date
+            freelancer_model.save()
+            messages.success(request, 'Successfully updated Freelancer')
+            return HttpResponseRedirect('/adminPanel/update/freelancer/'+freelancer_id)
+        except:
+            messages.error(request, "Failed to updated Staff")
+            return HttpResponseRedirect("/adminPanel/update/freelancer/"+freelancer_id)
 
 
 # Function to soft delete Freelancer account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
-def soft_delete_freelancer(request):
-    pass
+def soft_delete_freelancer(request, freelancer_id):
+    freelancer = Freelancer.objects.get(admin=freelancer_id)
+    freelancer.isDelete=True
+    freelancer.save()
+    messages.success(request, 'Freelancer Deleted Successfully')
+    return HttpResponseRedirect('/adminPanel/manage/freelancer/')

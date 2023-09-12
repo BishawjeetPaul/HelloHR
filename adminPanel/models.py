@@ -111,6 +111,7 @@ def create_user_profile(sender,instance,created,**kwargs):
         if instance.user_type==3:
             Staffs.objects.create(
                 admin=instance,
+                staff_email="",
                 address="",
                 mobile_no="",
                 profile_pic="",
@@ -120,6 +121,7 @@ def create_user_profile(sender,instance,created,**kwargs):
         if instance.user_type==4:
             Freelancer.objects.create(
                 admin=instance,
+                freelancer_email="",
                 address="",
                 mobile_no="",
                 profile_pic="",
