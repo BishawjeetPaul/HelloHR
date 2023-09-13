@@ -164,4 +164,11 @@ cython_debug/
 .vscode
 
 #database
-db.sqlite3
+*.sqlite3
+#python related and project related file and folder
+adminPanel/__pycache__/
+adminPanel/migrations/
+HelloHR/__pycache__/
+HelloHR/migrations/
+webpages/__pycache__/
+webpages/migrations/
