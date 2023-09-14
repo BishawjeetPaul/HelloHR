@@ -55,3 +55,8 @@ def GetUserDetail(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("login"))
+
+
+# This function is used to forget password page.
+def forget_password(request):
+    pass

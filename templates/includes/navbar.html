@@ -11,19 +11,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a href="{% url "home" %}" class="nav-link" href="">Home</a>
+            <a href="/" class="nav-link">Home</a>
           </li>
           <li class="nav-item">
-            <a href="{% url "aboutus" %}" class="nav-link" href="#">About</a>
+            <a href="{% url "webpages:aboutus" %}" class="nav-link">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="">Freelancer</a>
           </li>
           <li class="nav-item">
-            <a href="{% url "service" %}" class="nav-link" href="#">Services</a>
+            <a href="{% url "webpages:service" %}" class="nav-link">Services</a>
           </li>
           <li class="nav-item">
-            <a href="{% url "contact" %}" class="nav-link" href="#">Contact</a>
+            <a href="{% url "webpages:contact" %}" class="nav-link">Contact</a>
           </li>
 
         </ul>
