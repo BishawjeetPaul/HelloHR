@@ -1,5 +1,8 @@
 from django.urls import path
-from . import views, adminViews, hrViews, staffViews, freelancerView
+from . import freelancerViews, views, adminViews, hrViews, staffViews, freelancerViews
+
+
+
 
 urlpatterns = [
     # =============ADMIN-URL-PATH============ |
@@ -50,8 +53,8 @@ urlpatterns = [
     # ---------------------------- FRONTEND ------------------------------- |
     # path to dashboard page.
 	path('hr/dashboard/',hrViews.dashboard, name='hr-dashboard'),
-
     # ---------------------------- BACKEND -------------------------------- |
+
 
     # =============STAFF-URL-PATH============ |
     # ---------------------------- FRONTEND ------------------------------- |
@@ -63,7 +66,7 @@ urlpatterns = [
     # =============FREELANCER-URL-PATH============ |
     # ---------------------------- FRONTEND ------------------------------- |
     # path to dashboard page.
-	path('freelancer/dashboard/',freelancerView.dashboard, name='freelancer-dashboard'),
+	path('freelancer/dashboard/',freelancerViews.dashboard, name='freelancer-dashboard'),
 
     # ---------------------------- BACKEND -------------------------------- |
 
