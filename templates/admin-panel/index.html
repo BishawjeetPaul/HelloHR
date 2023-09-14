@@ -14,6 +14,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
     <link rel="stylesheet" href="{% static './css/admin/main.css' %}">
+    <link rel="stylesheet" href="{% static './css/admin/bootstrap.min.css' %}">
     {% block css %}
 
     {% endblock %}
@@ -76,12 +77,11 @@
                     <!-- footer ends -->
                 </div>
             </div>
-            <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
     </div>
-    <script type="text/javascript"
-        src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js">
-    </script>
+    
+     <!-- scripts -->
+  <script src="{% static './js/admin/global.js' %}"></script>
     {% block js %}
 
     {% endblock %}

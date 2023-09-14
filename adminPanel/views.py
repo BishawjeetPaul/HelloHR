@@ -27,7 +27,7 @@ def doLogin(request):
         if user is not None:
             login(request,user)
             if user.user_type=="1":
-                messages.succerss(request, email+" logged in successfully")
+                messages.success(request, email+" logged in successfully")
                 return HttpResponseRedirect("/hellohr/admin/dashboard/")
             elif user.user_type=="2":
                 messages.success(request, email+" logged in successfully")

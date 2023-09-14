@@ -152,7 +152,7 @@ def soft_delete_company_hr(request, hr_id):
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_staff(request):
-    return render(request, 'admin-panel/create-staff.html')
+    return render(request, 'admin-panel/staff/create-staff.html')
 
 
 # Function to save Staff account.
@@ -283,7 +283,7 @@ def soft_delete_staff(request, staff_id):
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_freelancer(request):
-    return render(request, 'admin-panel/create-freelancer.html')
+    return render(request, 'admin-panel/freelancer/create-freelancer.html')
 
 
 # Function to save Freelancer account.
@@ -345,7 +345,7 @@ def manage_freelancer(request):
     context = {
         'freelancers': freelancer,
     }
-    return render(request, 'admin-panel/staff/manage-freelancer.html', context)
+    return render(request, 'admin-panel/freelancer/manage-freelancer.html', context)
 
 
 # Function to update page Freelancer account.
