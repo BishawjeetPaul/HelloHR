@@ -92,8 +92,21 @@
                             <i class="fa text-white fa-calendar pr-1 pl-1"></i>
                         </button>
                     </div>
+                    <div class="widget-content-right header-user-info ml-3">
+                        <a href="{% url 'user-logout' %}">
+                        <button type="button" class="btn-shadow p-1 btn btn-danger btn-sm show-toastr-example">
+                            Logout
+                        </button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+      {% include 'messages.html' %}
+    </div>
+  </div>
