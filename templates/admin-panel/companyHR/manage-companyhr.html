@@ -143,17 +143,23 @@
                         <thead>
                             <tr>
                                 <th class="text-center">SL No</th>
-                                <th>Name</th>
-                                <th class="text-center">City</th>
-                                <th class="text-center">Status</th>
+                                <th class="text-center">First Name</th>
+                                <th class="text-center">Last Name</th>
+                                <th class="text-center">User email</th>
+                                <th class="text-center">Username</th>
+                                <th class="text-center">Login ID</th>
+                                <!-- <th class="text-center">Gender</th>
+                                <th class="text-center">Address</th>
+                                <th class="text-center">Registered</th>
+                                <th class="text-center">Last Login</th> -->
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for hr in conpanyhrs %}
+                            {% for hr in companyhrs %}
                             
                             <tr>
-                                <td class="text-center text-muted">#345</td>
+                                <td class="text-center text-muted">{{ forloop.counter }}</td>
                                 <td>
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
@@ -164,20 +170,22 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
-                                                <div class="widget-heading">{{hr.first_name}}</div>
-                                                <div class="widget-subheading opacity-7">Web Developer</div>
+                                                <div class="widget-heading">{{ hr.admin.first_name }}</div>
+                                                {% comment %} <div class="widget-subheading opacity-7">Web Developer</div> {% endcomment %}
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center">Madrid</td>
+                                <td class="text-center">{{ hr.admin.last_name }}</td>
                                 <td class="text-center">
-                                    <div class="badge badge-warning">Pending</div>
+                                    {{ hr.hr_email }}
                                 </td>
+                                <td class="text-center">{{ hr.admin.username }}</td>
+                                <td class="text-center text-danger">{{ hr.admin.email }}</td>
                                 <td class="text-center">
-                                    <div class="d-block text-center card-footer">
-                                        <button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger">Delete</button><span>/</span>
-                                        <button class="btn-wide btn btn-success"><a href="">Edit</a></button>
+                                    <div class="d-block text-center">
+                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'delete-company-hr' hr.admin.id %}">Delete</a></button>
+                                        <button class="btn-wide btn btn-success"><a href="{% url 'update-company-hr' hr.admin.id %}">Edit</a></button>
                                     </div>
                                 </td>
                             </tr>

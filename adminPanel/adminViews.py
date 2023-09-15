@@ -9,6 +9,14 @@ import random # Generated random numbers.
 
 
 
+
+@login_required(login_url="login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+# Function to used admin dashboard page.
+def dashboard(request):
+    return render(request, 'admin-panel/dashboard.html')
+
+
 # Function to create page CompanyHR account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -71,7 +79,7 @@ def save_company_hr(request):
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_company_hr(request):
-    company_hr = CompanyHR.objects.all()
+    company_hr = CompanyHR.objects.filter(isDelete=False)
     context = {
         'companyhrs': company_hr,
     }
@@ -337,7 +345,7 @@ def manage_freelancer(request):
     context = {
         'freelancers': freelancer,
     }
-    return render(request, 'admin-panel/staff/manage-freelancer.html', context)
+    return render(request, 'admin-panel/freelancer/manage-freelancer.html', context)
 
 
 # Function to update page Freelancer account.
