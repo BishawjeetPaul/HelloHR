@@ -90,6 +90,34 @@ class Freelancer(models.Model):
     objects = models.Manager()
 
 
+# For Candidates.
+class Candidate(models.Model):
+    GENDER = (
+        ('M', 'M'), # Male
+        ('F', 'F'), # Female
+        ('O', 'O'), # Other
+    )
+    CREATE_TYPE = (
+        (1, 'Admin'), # Admin
+        (2, 'HR'), # HR
+        (3, 'Staff'), # Staff
+        (4, 'Freelancer'), # Freelancer
+        (5, 'Referal') # In referal link
+    )
+    id = models.AutoField(primary_key=True)
+    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    hr_email = models.CharField(max_length=30)
+    mobile_no = models.CharField(max_length=10)
+    gender = models.CharField(max_length=1, null=True, choices=GENDER)
+    profile_pic = models.FileField(default='avatar.png', upload_to='companyHR/')
+    address = models.TextField()
+    password = models.CharField(max_length=15)
+    isDelete = models.BooleanField(default=False)
+    birth_date = models.DateTimeField(null=True, blank=True)
+    register_at = models.CharField(max_length=10, null=True, choices=CREATE_TYPE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()    
 
 
 # This for create user type account automatically.
