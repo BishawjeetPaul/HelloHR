@@ -1,6 +1,7 @@
 from django.shortcuts import render #Used to render the .html pages.
 from . models import CustomUser, CompanyHR, Staffs,Freelancer # From models.py.
 from django.contrib import messages # Return messages.
+from django.urls import reverse # Reverse page url.
 from django.http import HttpResponseRedirect # Redirect the pages.
 from django.contrib.auth.decorators import login_required # Login required to access private pages.
 from django.views.decorators.cache import cache_control # Destroy the section after logout.
@@ -48,7 +49,7 @@ def save_company_hr(request):
         check_company_hr = CompanyHR.objects.filter(mobile_no=mobile_no).first()
         if check_company_hr:
             messages.error(request, 'Mobile number Already exists..!')
-            return HttpResponseRedirect('/adminPanel/create/companyHR/')
+            return HttpResponseRedirect(reverse('adminPanel:add-company-hr'))
 
         try:
             user = CustomUser.objects.create_user(
@@ -69,10 +70,10 @@ def save_company_hr(request):
             user.companyhr.birth_date=birth_date
             user.save()
             messages.success(request, 'Successfully Added HR')
-            return HttpResponseRedirect('/adminPanel/create/companyHR/')
+            return HttpResponseRedirect(reverse('adminPanel:add-company-hr'))
         except:
             messages.error(request, "Failed to Added HR")
-            return HttpResponseRedirect("/adminPanel/create/companyHR/")
+            return HttpResponseRedirect(reverse('adminPanel:add-company-hr'))
 
 
 # Function to manage CompanyHR account.
@@ -131,10 +132,10 @@ def save_update_company_hr(request):
             company_hr_model.birth_date=birth_date
             company_hr_model.save()
             messages.success(request, 'Successfully updated HR')
-            return HttpResponseRedirect('/adminPanel/update/companyHR/'+hr_id)
+            return HttpResponseRedirect(reverse('adminPanel:update-company-hr', kwargs={'hr_id': hr_id}))
         except:
             messages.error(request, "Failed to updated HR")
-            return HttpResponseRedirect("/adminPanel/update/companyHR/"+hr_id)
+            return HttpResponseRedirect(reverse('adminPanel:update-company-hr', kwargs={'hr_id': hr_id}))
 
 
 # Function to soft delete CompanyHR account.
@@ -145,14 +146,14 @@ def soft_delete_company_hr(request, hr_id):
     company_hr.isDelete=True
     company_hr.save()
     messages.success(request, 'HR Deleted Successfully')
-    return HttpResponseRedirect('/adminPanel/manage/companyHR/')
+    return HttpResponseRedirect(reverse('adminPanel:manage-company-hr'))
 
 
 # Function to create page Staff account.
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_staff(request):
-    return render(request, 'admin-panel/create-staff.html')
+    return render(request, 'admin-panel/staff/create-staff.html')
 
 
 # Function to save Staff account.
@@ -179,7 +180,7 @@ def save_staff(request):
         check_staff = Staffs.objects.filter(mobile_no=mobile_no).first()
         if check_staff:
             messages.error(request, 'Mobile number Already exists..!')
-            return HttpResponseRedirect('/adminPanel/create/staff/')
+            return HttpResponseRedirect(reverse('adminPanel:add-staff'))
 
         try:
             user = CustomUser.objects.create_user(
@@ -200,10 +201,10 @@ def save_staff(request):
             user.staff.birth_date=birth_date
             user.save()
             messages.success(request, 'Successfully Added Staff')
-            return HttpResponseRedirect('/adminPanel/create/staff/')
+            return HttpResponseRedirect(reverse('adminPanel:add-staff'))
         except:
             messages.error(request, "Failed to Added Staff")
-            return HttpResponseRedirect("/adminPanel/create/staff/")
+            return HttpResponseRedirect(reverse('adminPanel:add-staff'))
 
 
 # Function to manage Staff account.
@@ -262,10 +263,10 @@ def save_update_staff(request):
             staff_model.birth_date=birth_date
             staff_model.save()
             messages.success(request, 'Successfully updated Staff')
-            return HttpResponseRedirect('/adminPanel/update/staff/'+staff_id)
+            return HttpResponseRedirect(reverse('adminPanel:update-staff', kwargs={'staff_id':staff_id}))
         except:
             messages.error(request, "Failed to updated Staff")
-            return HttpResponseRedirect("/adminPanel/update/staff/"+staff_id)
+            return HttpResponseRedirect(reverse('adminPanel:update-staff', kwargs={'staff_id':staff_id}))
 
 
 # Function to soft delete Staff account.
@@ -276,7 +277,7 @@ def soft_delete_staff(request, staff_id):
     staff.isDelete=True
     staff.save()
     messages.success(request, 'Staff Deleted Successfully')
-    return HttpResponseRedirect('/adminPanel/manage/staff/')
+    return HttpResponseRedirect(reverse('adminPanel:manage-staff'))
 
 
 # Function to create page Freelancer account.
@@ -310,7 +311,7 @@ def save_freelancer(request):
         check_freelancer = Freelancer.objects.filter(mobile_no=mobile_no).first()
         if check_freelancer:
             messages.error(request, 'Mobile number Already exists..!')
-            return HttpResponseRedirect('/adminPanel/create/freelancer/')
+            return HttpResponseRedirect(reverse('adminPanel:add-freelancer'))
 
         try:
             user = CustomUser.objects.create_user(
@@ -331,10 +332,10 @@ def save_freelancer(request):
             user.freelancer.birth_date=birth_date
             user.save()
             messages.success(request, 'Successfully Added HR')
-            return HttpResponseRedirect('/adminPanel/create/freelancer/')
+            return HttpResponseRedirect(reverse('adminPanel:add-freelancer'))
         except:
             messages.error(request, "Failed to Added HR")
-            return HttpResponseRedirect("/adminPanel/create/freelancer/")
+            return HttpResponseRedirect(reverse('adminPanel:add-freelancer'))
             
 
 # Function to manage Freelancer account.
@@ -357,7 +358,7 @@ def update_freelancer(request, freelancer_id):
         'freelancer': freelancer,
         'id': freelancer,
     }
-    return render(request, 'admin-panel/update-freelancer.html')
+    return render(request, 'admin-panel/update-freelancer.html', context)
 
 
 # Function to save update Freelancer account.
@@ -393,10 +394,10 @@ def save_update_freelancer(request):
             freelancer_model.birth_date=birth_date
             freelancer_model.save()
             messages.success(request, 'Successfully updated Freelancer')
-            return HttpResponseRedirect('/adminPanel/update/freelancer/'+freelancer_id)
+            return HttpResponseRedirect(reverse('adminPanel:update-freelancer', kwargs={'freelancer_id':freelancer_id}))
         except:
             messages.error(request, "Failed to updated Staff")
-            return HttpResponseRedirect("/adminPanel/update/freelancer/"+freelancer_id)
+            return HttpResponseRedirect(reverse('adminPanel:update-freelancer', kwargs={'freelancer_id':freelancer_id}))
 
 
 # Function to soft delete Freelancer account.
@@ -407,4 +408,4 @@ def soft_delete_freelancer(request, freelancer_id):
     freelancer.isDelete=True
     freelancer.save()
     messages.success(request, 'Freelancer Deleted Successfully')
-    return HttpResponseRedirect('/adminPanel/manage/freelancer/')
+    return HttpResponseRedirect(reverse('adminPanel:manage-freelancer'))

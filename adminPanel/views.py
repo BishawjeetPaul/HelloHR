@@ -28,7 +28,7 @@ def doLogin(request):
             login(request,user)
             if user.user_type=="1":
                 messages.success(request, email+" logged in successfully")
-                return HttpResponseRedirect("/hellohr/admin/dashboard/")
+                return HttpResponseRedirect(reverse("admin-dashboard"))
             elif user.user_type=="2":
                 messages.success(request, email+" logged in successfully")
                 return HttpResponseRedirect(reverse("hr-dashboard"))

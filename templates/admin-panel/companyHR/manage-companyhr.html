@@ -184,8 +184,8 @@
                                 <td class="text-center text-danger">{{ hr.admin.email }}</td>
                                 <td class="text-center">
                                     <div class="d-block text-center">
-                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'delete-company-hr' hr.admin.id %}">Delete</a></button>
-                                        <button class="btn-wide btn btn-success"><a href="{% url 'update-company-hr' hr.admin.id %}">Edit</a></button>
+                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'adminPanel:delete-company-hr' hr.admin.id %}">Delete</a></button>
+                                        <button class="btn-wide btn btn-success"><a href="{% url 'adminPanel:update-company-hr' hr.admin.id %}">Edit</a></button>
                                     </div>
                                 </td>
                             </tr>
