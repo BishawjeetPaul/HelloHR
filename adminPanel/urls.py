@@ -53,6 +53,8 @@ urlpatterns = [
     # ---------------------------- FRONTEND ------------------------------- |
     # path to dashboard page.
 	path('hr/dashboard',hrViews.dashboard, name='hr-dashboard'),
+    path('hr/candidate/detail',hrViews.candidate_detail, name='hr-candidate-detail'),
+    path('hr/candidate/manage',hrViews.candidate_manage, name='hr-candidate-manage'),
     # ---------------------------- BACKEND -------------------------------- |
 
 
@@ -60,6 +62,8 @@ urlpatterns = [
     # ---------------------------- FRONTEND ------------------------------- |
     # path to dashboard page.
 	path('staff/dashboard',staffViews.dashboard, name='staff-dashboard'),
+	path('staff/candidate/submission',staffViews.candidate_submission, name='staff-candidate-submission'),
+
 
     # ---------------------------- BACKEND -------------------------------- |
 
@@ -67,6 +71,8 @@ urlpatterns = [
     # ---------------------------- FRONTEND ------------------------------- |
     # path to dashboard page.
 	path('freelancer/dashboard',freelancerViews.dashboard, name='freelancer-dashboard'),
+	path('freelancer/candidate/submission',freelancerViews.candidate_submission, name='freelancer-candidate-submission'),
+
 
     # ---------------------------- BACKEND -------------------------------- |
 

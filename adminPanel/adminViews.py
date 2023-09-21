@@ -284,7 +284,7 @@ def soft_delete_staff(request, staff_id):
 @login_required(login_url="login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_freelancer(request):
-    return render(request, 'admin-panel/create-freelancer.html')
+    return render(request, 'admin-panel/freelancer/create-freelancer.html')
 
 
 # Function to save Freelancer account.
@@ -358,7 +358,7 @@ def update_freelancer(request, freelancer_id):
         'freelancer': freelancer,
         'id': freelancer,
     }
-    return render(request, 'admin-panel/update-freelancer.html', context)
+    return render(request, 'admin-panel/freelancer/update-freelancer.html', context)
 
 
 # Function to save update Freelancer account.

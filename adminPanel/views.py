@@ -28,16 +28,16 @@ def doLogin(request):
             login(request,user)
             if user.user_type=="1":
                 messages.success(request, email+" logged in successfully")
-                return HttpResponseRedirect(reverse("admin-dashboard"))
+                return HttpResponseRedirect(reverse("adminPanel:admin-dashboard"))
             elif user.user_type=="2":
                 messages.success(request, email+" logged in successfully")
-                return HttpResponseRedirect(reverse("hr-dashboard"))
+                return HttpResponseRedirect(reverse("adminPanel:hr-dashboard"))
             elif user.user_type=="3":
                 messages.success(request, email+" logged in successfully")
-                return HttpResponseRedirect(reverse("staff-dashboard"))
+                return HttpResponseRedirect(reverse("adminPanel:staff-dashboard"))
             else:
                 messages.success(request, email+" logged in successfully")
-                return HttpResponseRedirect(reverse("freelancer-dashboard"))
+                return HttpResponseRedirect(reverse("adminPanel:freelancer-dashboard"))
         else:
             messages.error(request, 'Invalid Logged in details')
             return HttpResponseRedirect("/hellohr/login/")
@@ -54,7 +54,7 @@ def GetUserDetail(request):
 # This function is used to user logged out.
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse("login"))
+    return HttpResponseRedirect(reverse("adminPanel:login"))
 
 
 # This function is used to forget password page.
