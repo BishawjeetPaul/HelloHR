@@ -8,17 +8,14 @@
     <div class="app-page-title">
         <div class="page-title-wrapper">
             <div class="page-title-heading">
-                <div class="page-title-icon">
-                    <i class="pe-7s-car icon-gradient bg-mean-fruit">
-                    </i>
-                </div>
+                
                 <div>Manage All HR Account
                     <div class="page-title-subheading">This is where you can take action related to freelancer account and filter it
                         
                     </div>
                 </div>
             </div>
-            <!-- <div class="page-title-actions">
+            
                 <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom"
                     class="btn-shadow mr-3 btn btn-dark">
                     <i class="fa fa-star"></i>
@@ -177,8 +174,8 @@
                                 <td class="text-center text-danger">{{ fl.admin.email }}</td>
                                 <td class="text-center">
                                     <div class="d-block text-center">
-                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'delete-freelancer' fl.admin.id %}">Delete</a></button>
-                                        <button class="btn-wide btn btn-success"><a href="{% url 'update-freelancer' fl.admin.id %}">Edit</a></button>
+                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'adminPanel:delete-freelancer' fl.admin.id %}">Delete</a></button>
+                                        <button class="btn-wide btn btn-success"><a href="{% url 'adminPanel:update-freelancer' fl.admin.id %}">Edit</a></button>
                                     </div>
                                 </td>
                             </tr>

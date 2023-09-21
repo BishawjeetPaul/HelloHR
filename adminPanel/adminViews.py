@@ -43,7 +43,7 @@ def save_company_hr(request):
         random_number = str(random.randint(000000,999999))
         l_first_name = first_name.lower()
         random_user_id = (l_first_name+random_number)
-        unique_email_id = (random_user_id+"@hellohr")
+        unique_email_id = (random_user_id+"@hellohr.com")
         print(unique_email_id)
 
         check_company_hr = CompanyHR.objects.filter(mobile_no=mobile_no).first()
@@ -64,7 +64,6 @@ def save_company_hr(request):
 
             user.companyhr.hr_email=email
             user.companyhr.mobile_no=mobile_no
-            user.companyhr.password=password
             user.companyhr.address=address
             user.companyhr.gender=gender
             user.companyhr.birth_date=birth_date
@@ -174,7 +173,7 @@ def save_staff(request):
         random_number = str(random.randint(000000,999999))
         l_first_name = first_name.lower()
         random_user_id = (l_first_name+random_number)
-        unique_email_id = (random_user_id+"@hellohr")
+        unique_email_id = (random_user_id+"@hellohr.com")
         print(unique_email_id)
 
         check_staff = Staffs.objects.filter(mobile_no=mobile_no).first()
@@ -195,7 +194,6 @@ def save_staff(request):
 
             user.staff.hr_email=email
             user.staff.mobile_no=mobile_no
-            user.staff.password=password
             user.staff.address=address
             user.staff.gender=gender
             user.staff.birth_date=birth_date
@@ -305,7 +303,7 @@ def save_freelancer(request):
         random_number = str(random.randint(000000,999999))
         l_first_name = first_name.lower()
         random_user_id = (l_first_name+random_number)
-        unique_email_id = (random_user_id+"@hellohr")
+        unique_email_id = (random_user_id+"@hellohr.com")
         print(unique_email_id)
 
         check_freelancer = Freelancer.objects.filter(mobile_no=mobile_no).first()
@@ -326,7 +324,6 @@ def save_freelancer(request):
 
             user.freelancer.hr_email=email
             user.freelancer.mobile_no=mobile_no
-            user.freelancer.password=password
             user.freelancer.address=address
             user.freelancer.gender=gender
             user.freelancer.birth_date=birth_date

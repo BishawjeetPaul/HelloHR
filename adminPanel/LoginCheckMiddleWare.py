@@ -18,28 +18,28 @@ class LoginCheckMiddleWare(MiddlewareMixin):
                 elif modulename == "adminPanel.views":
                     pass
                 else:
-                    return HttpResponseRedirect(reverse('admin-dashboard'))
+                    return HttpResponseRedirect(reverse('adminPanel:admin-dashboard'))
             elif user.user_type == "2":
                 if modulename == "adminPanel.hrViews":
                     pass
                 elif modulename == "adminPanel.views":
                     pass
                 else:
-                    return HttpResponseRedirect(reverse('hr-dashboard'))
+                    return HttpResponseRedirect(reverse('adminPanel:hr-dashboard'))
             elif user.user_type == "3":
                 if modulename == "adminPanel.staffViews":
                     pass
                 elif modulename == "adminPanel.views":
                     pass
                 else:
-                    return HttpResponseRedirect(reverse('staff-dashboard'))
+                    return HttpResponseRedirect(reverse('adminPanel:staff-dashboard'))
             elif user.user_type == "4":
                 if modulename == "adminPanel.freelancerViews":
                     pass
                 elif modulename == "adminPanel.views":
                     pass
                 else:
-                    return HttpResponseRedirect(reverse('freelancer-dashboard'))
+                    return HttpResponseRedirect(reverse('adminPanel:freelancer-dashboard'))
             else:
                 return HttpResponseRedirect(reverse('login'))
             
