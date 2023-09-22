@@ -106,18 +106,36 @@ class Candidate(models.Model):
     )
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    hr_email = models.CharField(max_length=30)
+    email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
     gender = models.CharField(max_length=1, null=True, choices=GENDER)
+    aadhar_no = models.BigIntegerField()
+    clg_sch_name = models.CharField(max_length=100)
+    degree = models.CharField(max_length=30)
+    field_of_study = models.CharField(max_length=100)
+    heighest_qualification = models.CharField(max_length=100)
+    passing_year = models.CharField(max_length=20)
     profile_pic = models.FileField(default='avatar.png', upload_to='companyHR/')
-    address = models.TextField()
-    password = models.CharField(max_length=15)
     isDelete = models.BooleanField(default=False)
     birth_date = models.DateTimeField(null=True, blank=True)
-    register_at = models.CharField(max_length=10, null=True, choices=CREATE_TYPE)
+    register_user = models.CharField(max_length=10, null=True, choices=CREATE_TYPE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()    
+
+
+# For Candidate address.
+class CandidateAddress(models.Model):
+    id = models.AutoField(primary_key=True)
+    candidate = models.OneToOneField(Candidate, on_delete=models.CASCADE)
+    street_address = models.CharField(max_length=50)
+    street_address_line_2 = models.CharField(max_length=50)
+    city = models.CharField(max_length=25)
+    state = models.CharField(max_length=25)
+    zip_code = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
 
 # This for create user type account automatically.
