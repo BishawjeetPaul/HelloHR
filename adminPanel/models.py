@@ -105,7 +105,8 @@ class Candidate(models.Model):
         (5, 'Referal') # In referal link
     )
     id = models.AutoField(primary_key=True)
-    admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
     alt_mobile_no = models.CharField(max_length=10)

@@ -40,23 +40,10 @@ def doLogin(request):
                 return HttpResponseRedirect(reverse("adminPanel:freelancer-dashboard"))
         else:
             messages.error(request, 'Invalid Logged in details')
-            return HttpResponseRedirect("/hellohr/login/")
-        
-
-# This function is used to get user details.
-def GetUserDetail(request):
-    if request.user!=None:
-        return HttpResponse("Username : "+request.user.username+" userType : "+request.user.user_type)
-    else:
-        return HttpResponse("Please Login first")
+            return HttpResponseRedirect(reverse("adminPanel:login"))
     
 
 # This function is used to user logged out.
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("adminPanel:login"))
-
-
-# This function is used to forget password page.
-def forget_password(request):
-    pass

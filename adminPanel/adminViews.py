@@ -1,5 +1,5 @@
 from django.shortcuts import render #Used to render the .html pages.
-from . models import CustomUser, CompanyHR, Staffs,Freelancer # From models.py.
+from . models import CustomUser,CompanyHR, Staffs,Freelancer,Candidate # From models.py.
 from django.contrib import messages # Return messages.
 from django.urls import reverse # Reverse page url.
 from django.http import HttpResponseRedirect # Redirect the pages.
@@ -328,7 +328,7 @@ def save_freelancer(request):
             user.freelancer.gender=gender
             user.freelancer.birth_date=birth_date
             user.save()
-            messages.success(request, 'Successfully Added HR')
+            messages.success(request, 'Successfully Added Freelancer')
             return HttpResponseRedirect(reverse('adminPanel:add-freelancer'))
         except:
             messages.error(request, "Failed to Added HR")
@@ -406,3 +406,73 @@ def soft_delete_freelancer(request, freelancer_id):
     freelancer.save()
     messages.success(request, 'Freelancer Deleted Successfully')
     return HttpResponseRedirect(reverse('adminPanel:manage-freelancer'))
+
+
+# Function to create candidate page.
+@login_required(login_url="login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def add_candidate(request):
+    return render(request, 'admin-panel/create-candidate.html')
+
+
+# Function to save candidate details.
+@login_required(login_url="login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def save_candidate(request):
+    if request.method == 'POST':
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        mobile_no = request.POST.get('mobile_no')
+        alt_mobile_no = request.POST.get('alt_mobile_no')
+        gender = request.POST.get('gender')
+        aadhar_no = request.POST.get('aadhar_no')
+        clg_sch_name = request.POST.get('clg_sch_name')
+        degree = request.POST.get('degree')
+        field_of_study = request.POST.get('field_of_study')
+        heighest_qualification = request.POST.get('heighest_qualification')
+        passing_year = request.POST.get('passing_year')
+        work_experience = request.POST.get('work_experience')
+        profile_pic = request.POST.get('profile_pic')
+        birth_date = request.POST.get('birth_date')
+        resume = request.POST.get('resume')
+        street_address = request.POST.get('street_address')
+        street_address_line_2 = request.POST.get('street_address_line_2')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        zip_code = request.POST.get('zip_code')
+        
+        
+        try:
+            candidate = Candidate.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                mobile_no=mobile_no,
+                alt_mobile_no=alt_mobile_no,
+                gender=gender,
+                aadhar_no=aadhar_no,
+                clg_sch_name=clg_sch_name,
+                degree=degree,
+                field_of_study=field_of_study,
+                heighest_qualification=heighest_qualification,
+                passing_year=passing_year,
+                work_experience=work_experience,
+                profile_pic=profile_pic,
+                birth_date=birth_date,
+                resume=resume,
+                register_user=1
+            )
+
+            candidate.candidateaddress.street_address=street_address
+            candidate.candidateaddress.street_address_line_2=street_address_line_2
+            candidate.candidateaddress.city=city
+            candidate.candidateaddress.state=state
+            candidate.candidateaddress.zip_code=zip_code
+            candidate.save()
+
+            messages.success(request, 'Details submited successfully')
+            return HttpResponseRedirect(reverse('adminPanel:add-candidate'))
+        except:
+            messages.error(request, 'Oops something wrong')
+            return HttpResponseRedirect(reverse('adminPanel:add-candidate'))
