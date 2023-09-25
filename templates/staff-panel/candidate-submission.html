@@ -1,0 +1,323 @@
+{% extends 'hr-panel/index.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    .section {
+    padding: 10px 0;
+}
+.navbar, .navbar.navbar-default {
+    background-color: #d32f2f;
+    
+}
+.profile-page .header {
+    height: 100px;
+    background-position: top center;
+    background-color: #d32f2f;
+}
+.wrapper >.header {
+    min-height: 200px;
+    background-size: cover;
+}
+.btn.btn-twitter, .navbar .navbar-nav > li > a.btn.btn-twitter {
+    background-color: #55acee;
+    color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(85, 172, 238, 0.14), 0 3px 1px -2px rgba(85, 172, 238, 0.2), 0 1px 5px 0 rgba(85, 172, 238, 0.12);
+}
+.btn.btn-facebook, .navbar .navbar-nav > li > a.btn.btn-facebook {
+    background-color: #3b5998;
+    color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(59, 89, 152, 0.14), 0 3px 1px -2px rgba(59, 89, 152, 0.2), 0 1px 5px 0 rgba(59, 89, 152, 0.12);
+}
+.btn.btn-google, .navbar .navbar-nav > li > a.btn.btn-google {
+    background-color: #dd4b39;
+    color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(221, 75, 57, 0.14), 0 3px 1px -2px rgba(221, 75, 57, 0.2), 0 1px 5px 0 rgba(221, 75, 57, 0.12);
+}
+a, a:hover, a:focus {
+    color: #AA2906;
+}
+
+.card1 {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+   
+}
+
+.material-button-anim {
+  position: relative;
+  padding: 12px 15px 27px;
+  text-align: center;
+  max-width: 320px;
+  margin: 0 auto 20px;
+}
+
+.material-button {
+    position: relative;
+    top: 0;
+    z-index: 1;
+    width: 70px;
+    height: 70px;
+    font-size: 1.5em;
+    color: #fff;
+    background: #E23807;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,.275);
+    outline: none;
+}
+.material-button-toggle {
+    z-index: 3;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+}
+.material-button-toggle span {
+    -webkit-transform: none;
+    transform:         none;
+    -webkit-transition: -webkit-transform .175s cubic-bazier(.175,.67,.83,.67);
+    transition:         transform .175s cubic-bazier(.175,.67,.83,.67);
+}
+.material-button-toggle.open {
+    -webkit-transform: scale(1.3,1.3);
+    transform:         scale(1.3,1.3);
+    -webkit-animation: toggleBtnAnim .175s;
+    animation:         toggleBtnAnim .175s;
+}
+.material-button-toggle.open span {
+    -webkit-transform: rotate(45deg);
+    transform:         rotate(45deg);
+    -webkit-transition: -webkit-transform .175s cubic-bazier(.175,.67,.83,.67);
+    transition:         transform .175s cubic-bazier(.175,.67,.83,.67);
+}
+
+#options {
+  height: 70px;
+}
+.option {
+    position: relative;
+}
+.option .option1,
+.option .option2,
+.option .option3 {
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -webkit-transition: all .175s;
+    transition:         all .175s;
+}
+.option .option1 {
+    -webkit-transform: translate3d(90px,90px,0) scale(.8,.8);
+    transform:         translate3d(90px,90px,0) scale(.8,.8);
+}
+.option .option2 {
+    -webkit-transform: translate3d(0,90px,0) scale(.8,.8);
+    transform:         translate3d(0,90px,0) scale(.8,.8);
+}
+.option .option3 {
+    -webkit-transform: translate3d(-90px,90px,0) scale(.8,.8);
+    transform:         translate3d(-90px,90px,0) scale(.8,.8);
+}
+.option.scale-on .option1, 
+.option.scale-on .option2,
+.option.scale-on .option3 {
+    filter: blur(0);
+    -webkit-filter: blur(0);
+    -webkit-transform: none;
+    transform:         none;
+    -webkit-transition: all .175s;
+    transition:         all .175s;
+}
+.option.scale-on .option2 {
+    -webkit-transform: translateY(-28px) translateZ(0);
+    transform:         translateY(-28px) translateZ(0);
+    -webkit-transition: all .175s;
+    transition:         all .175s;
+}
+
+@keyframes toggleBtnAnim {
+    0% {
+        -webkit-transform: scale(1,1);
+        transform:         scale(1,1);
+    }
+    25% {
+        -webkit-transform: scale(1.4,1.4);
+        transform:         scale(1.4,1.4); 
+    }
+    75% {
+        -webkit-transform: scale(1.2,1.2);
+        transform:         scale(1.2,1.2);
+    }
+    100% {
+        -webkit-transform: scale(1.3,1.3);
+        transform:         scale(1.3,1.3);
+    }
+}
+@-webkit-keyframes toggleBtnAnim {
+    0% {
+        -webkit-transform: scale(1,1);
+        transform:         scale(1,1);
+    }
+    25% {
+        -webkit-transform: scale(1.4,1.4);
+        transform:         scale(1.4,1.4); 
+    }
+    75% {
+        -webkit-transform: scale(1.2,1.2);
+        transform:         scale(1.2,1.2);
+    }
+    100% {
+        -webkit-transform: scale(1.3,1.3);
+        transform:         scale(1.3,1.3);
+    }
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-0">
+    <form>
+      <div class="row jumbotron box8">
+        <div class="col-sm-12 mx-t3 mb-4">
+          <h2 class="text-center text-info">Register Candidate</h2>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="name-f">First Name</label>
+          <input type="text" class="form-control" name="fname" id="name-f" placeholder="Enter your first name." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="name-l">Last name</label>
+          <input type="text" class="form-control" name="lname" id="name-l" placeholder="Enter your last name." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="address-1">Address Line-1</label>
+          <input type="address" class="form-control" name="Locality" id="address-1" placeholder="Locality/House/Street no." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="address-2">Address Line-2</label>
+          <input type="address" class="form-control" name="address" id="address-2" placeholder="Village/City Name." required>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="State">State</label>
+          <input type="address" class="form-control" name="State" id="State" placeholder="Enter your state name." required>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="zip">Postal-Code</label>
+          <input type="zip" class="form-control" name="Zip" id="zip" placeholder="Postal-Code." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="Country">Country</label>
+          <select class="form-control custom-select browser-default">
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Iceland">Iceland</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+
+          </select>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="Date">Date Of Birth</label>
+          <input type="Date" name="dob" class="form-control" id="Date" placeholder="" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="sex">Gender</label>
+          <select id="sex" class="form-control browser-default custom-select">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="unspesified">Unspecified</option>
+          </select>
+        </div>
+        <div class="col-sm-2 form-group">
+          <label for="cod">Country code</label>
+          <select class="form-control browser-default custom-select">
+            <option data-countryCode="US" value="1" selected>USA (+1)</option>
+            <option data-countryCode="GB" value="44">UK (+44)</option>
+            <option disabled="disabled">Other Countries</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Iceland">Iceland</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+          </select>
+        </div>
+        <div class="col-sm-4 form-group">
+          <label for="tel">Phone</label>
+          <input type="tel" name="phone" class="form-control" id="tel" placeholder="Enter Your Contact Number." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="pass">Alternate Mobile No</label>
+          <input type="text" name="Alternate Mobile No" class="form-control" id="" placeholder="Alternate Mobile No." required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="pass2">Work Expirence</label>
+          <input type="text" name="cnf-password" class="form-control" id="" placeholder="" required>
+        </div>
+        <div class="col-sm-6 form-group">
+            <label for="sex">Applied Position</label>
+            <select id="sex" class="form-control browser-default custom-select">
+              <option value="male">xyz</option>
+              <option value="female">abc</option>
+              <option value="unspesified">Unspecified</option>
+            </select>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="pass2">Adhar Number</label>
+            <input type="text" name="cnf-password" class="form-control" id="" placeholder="" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="">School Name</label>
+            <input type="text" name="cnf-password" class="form-control" id="" placeholder="" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="">Degree</label>
+            <input type="text" name="cnf-password" class="form-control" id="" placeholder="" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="">Field Of Study</label>
+            <input type="text" name="cnf-password" class="form-control" id="" placeholder="" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="">Highest Qualification</label>
+            <input type="text" name="cnf-password" class="form-control" id="" placeholder="" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="">Passing Year</label>
+            <input type="text" name="cnf-password" class="form-control" id="" placeholder="Passing Year" required>
+          </div>
+        <div class="col-sm-12">
+          <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.
+          </label>
+        </div>
+  
+        <div class="col-sm-12 form-group mb-0">
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
+        </div>
+  
+      </div>
+    </form>
+  </div>
+{% endblock %}

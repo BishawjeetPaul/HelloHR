@@ -1,0 +1,224 @@
+{% extends 'hr-panel/index.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static './css/admin/pagination.css' %}">
+    <style>
+        .table-fixed{
+  width: 100%;
+  background-color: #f3f3f3;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+  tbody{
+    td{
+      float:left;
+    }
+  }
+  thead {
+    tr{
+      th{
+        float:left;
+       background-color: #f39c12;
+       border-color:#e67e22;
+      }
+    }
+  }
+}
+
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="app-main__inner">
+    <div class="app-page-title p-0 m-0">
+        <div class="row">
+            <h4 class="col-md-6">Candidate Filter Search</h4>
+         <!-- Breadcrumb -->
+         <nav aria-label="breadcrumb" class="col-md-6 float-right">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+        </div>
+        
+    </div>
+    <div class="row">
+        <form class="row col-md-12">
+        <div class="col-md-6 col-xl-4">
+            <div class="form-group">
+                <input name="candidate_name" type="text" class="form-control" placeholder="Candidate Name" />
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="form-group">
+                <input name="candidate_name" type="text" class="form-control" placeholder="Candidate Email" />
+            </div>
+        </div>
+        
+        <div class="col-md-6 col-xl-4">
+            <div class="form-group">
+                <input name="candidate_name" type="text" class="form-control" placeholder="Candidate Username" />
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="form-group">
+                <select name="status" id="" class="form-control">
+                    <option value="selected">Selected</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="form-group date" data-provide="datepicker">
+                <input type="date" data-provide="datepicker" class="form-control">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-th"></span>
+                </div>
+            </div>
+        </div>
+        <div class="d-lg-block col-md-6 col-xl-4">
+            <div class="form-group d-flex">
+                <button type="submit" class="btn-flat btn btn-primary form-btn w-50">Search</button>
+                <button type="reset" class="btn-flat btn btn-danger form-btn w-50">Reset</button>
+            </div>
+        </div>
+    </form>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-midnight-bloom">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Total Candidate</div>
+                        <div class="widget-subheading">Last year count</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>196</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-arielle-smile">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Selected Candidate</div>
+                        <div class="widget-subheading">Total number of selected candidate</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>568</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-4">
+            <div class="card mb-3 widget-content bg-grow-early">
+                <div class="widget-content-wrapper text-white">
+                    <div class="widget-content-left">
+                        <div class="widget-heading">Rejected Candidate</div>
+                        <div class="widget-subheading">Total number of rejected candidate</div>
+                    </div>
+                    <div class="widget-content-right">
+                        <div class="widget-numbers text-white"><span>46</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="table-responsive">
+                    <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                        <thead>
+                            <tr class="badge-warning">
+                                <th class="text-center">SL No</th>
+                                <th class="text-center">First Name</th>
+                                <th class="text-center">Last Name</th>
+                                <th class="text-center">User email</th>
+                                <th class="text-center">Username</th>
+                                <th class="text-center">Login ID</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Address</th>
+                                <th class="text-center">Registered</th>
+                                <th class="text-center">Last Login</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="overflow-auto">
+                            <tr>
+                                <td class="text-center text-muted p-0">01</td>
+                                <td class="text-center p-0">
+                                    <div class="widget-content p-0">
+                                        <div class="widget-content-wrapper">
+                                            <div class="widget-content-left mr-3">
+                                                <div class="widget-content-left">
+                                                    <img width="40" class="rounded-circle"
+                                                        src="assets/images/avatars/4.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="widget-content-left flex2">
+                                                <div class="widget-heading">Koushik</div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center p-0">Hait</td>
+                                <td class="text-center p-0">
+                                    koushikhait49@gmail.com
+                                </td>
+                                <td class="text-center p-0">koushikhait</td>
+                                <td class="text-center p-0 text-danger">koushikhait49@gmail.com</td>
+                                <td class="text-center p-0 "><div class="badge badge-warning">Rejected</div></td>
+                                <td class="text-center p-0">kashinathpur</td>
+                                <td class="text-center p-0">Yes</td>
+                                <td class="text-center p-0">12/12/12</td>
+                                <td class="text-center p-0">
+                                    <div class="d-block text-center">
+                                        <button class="btn-flat btn-xs btn btn-primary btn-sm"><a class="text-white" href="{% url 'adminPanel:hr-candidate-detail' %}">Candidate Details</a></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination_rounded">
+                    <ul>
+                        <li>
+                            <a href="#" class="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i> Prev </a>
+                        </li>
+                        <li><a href="#">1</a>
+                        </li>
+                        <li class="hidden-xs"><a href="#">2</a>
+                        </li>
+                        <li class="hidden-xs"><a href="#">3</a>
+                        </li>
+                        <li class="hidden-xs"><a href="#">4</a>
+                        </li>
+                        <li class="hidden-xs"><a href="#">5</a>
+                        </li>
+                        <li class="visible-xs"><a href="#">...</a>
+                        </li>
+                        <li><a href="#">6</a>
+                        </li>
+                        <li><a href="#" class="next"> Next <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

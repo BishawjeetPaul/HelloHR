@@ -8,67 +8,21 @@
             </a>
         </li>
         <li class="app-sidebar__heading">
-            User Accounts
+             Accounts
         </li>
         <li>
             <a href="#">
-                HR
+                Candidate
             </a>
             <ul>
                 <li>
-                    <a href="{% url 'adminPanel:add-company-hr' %}">
-                        Create Account
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'adminPanel:manage-compay-hr' %}">
-                        Manage Account
+                    <a href="{% url 'adminPanel:hr-candidate-manage' %}">
+                        Manage Candidate
                     </a>
                 </li>
                 
             </ul>
         </li>
-        <li>
-            <a href="#">
-                Staff
-            </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:add-staff' %}">
-                        
-                        Create Account
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'adminPanel:manage-staff' %}">
-                        
-                       Manage Account
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                
-                Freelancer
-                
-            </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:add-freelancer' %}">
-                        
-                        Create Account
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'adminPanel:manage-freelancer' %}">
-                        
-                        Manage Account
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
+        
     </ul>
 </div>
