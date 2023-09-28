@@ -47,3 +47,20 @@ def doLogin(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse("adminPanel:login"))
+
+
+# This function is used to change Admin password:
+@login_required(login_url="adminPanel:login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def change_password(request):
+    return render(request, 'admin-panel/change-password.html')
+
+
+
+# This function is used to change Admin password:
+@login_required(login_url="adminPanel:login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def update_new_password(request):
+    # if request.method == 'POST':
+    #     old_password = request
+    pass
