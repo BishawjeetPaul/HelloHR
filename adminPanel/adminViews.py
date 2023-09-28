@@ -11,7 +11,7 @@ import random # Generated random numbers.
 
 
 
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 # Function to used admin dashboard page.
 def dashboard(request):
@@ -19,14 +19,14 @@ def dashboard(request):
 
 
 # Function to create page CompanyHR account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_company_hr(request):
     return render(request, 'admin-panel/companyHR/create-companyhr.html')
 
 
 # Function to save CompanyHR account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_company_hr(request):
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def save_company_hr(request):
 
 
 # Function to manage CompanyHR account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_company_hr(request):
     company_hr = CompanyHR.objects.filter(isDelete=False)
@@ -87,7 +87,7 @@ def manage_company_hr(request):
 
 
 # Function to update page CompanyHR account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def update_company_hr(request, hr_id):
     company_hr = CompanyHR.objects.get(admin=hr_id)
@@ -99,7 +99,7 @@ def update_company_hr(request, hr_id):
 
 
 # Function to save update CompanyHR account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_update_company_hr(request):
     if request.method == 'POST':
@@ -138,7 +138,7 @@ def save_update_company_hr(request):
 
 
 # Function to soft delete CompanyHR account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def soft_delete_company_hr(request, hr_id):
     company_hr = CompanyHR.objects.get(admin=hr_id)
@@ -149,14 +149,14 @@ def soft_delete_company_hr(request, hr_id):
 
 
 # Function to create page Staff account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_staff(request):
     return render(request, 'admin-panel/staff/create-staff.html')
 
 
 # Function to save Staff account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_staff(request):
     if request.method == 'POST':
@@ -206,7 +206,7 @@ def save_staff(request):
 
 
 # Function to manage Staff account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_staff(request):
     staffs = Staffs.objects.all()
@@ -217,7 +217,7 @@ def manage_staff(request):
 
 
 # Function to update page Staff account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def update_staff(request, staff_id):
     staff = CompanyHR.objects.get(admin=staff_id)
@@ -229,7 +229,7 @@ def update_staff(request, staff_id):
 
 
 # Function to save update Staff account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_update_staff(request):
     if request.method == 'POST':
@@ -268,7 +268,7 @@ def save_update_staff(request):
 
 
 # Function to soft delete Staff account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def soft_delete_staff(request, staff_id):
     staff = Staffs.objects.get(admin=staff_id)
@@ -279,14 +279,14 @@ def soft_delete_staff(request, staff_id):
 
 
 # Function to create page Freelancer account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_freelancer(request):
     return render(request, 'admin-panel/freelancer/create-freelancer.html')
 
 
 # Function to save Freelancer account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_freelancer(request):
     if request.method == 'POST':
@@ -336,7 +336,7 @@ def save_freelancer(request):
             
 
 # Function to manage Freelancer account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_freelancer(request):
     freelancer = Freelancer.objects.all()
@@ -347,7 +347,7 @@ def manage_freelancer(request):
 
 
 # Function to update page Freelancer account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def update_freelancer(request, freelancer_id):
     freelancer = Freelancer.objects.get(admin=freelancer_id)
@@ -359,7 +359,7 @@ def update_freelancer(request, freelancer_id):
 
 
 # Function to save update Freelancer account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_update_freelancer(request):
     if request.method == 'POST':
@@ -398,7 +398,7 @@ def save_update_freelancer(request):
 
 
 # Function to soft delete Freelancer account.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def soft_delete_freelancer(request, freelancer_id):
     freelancer = Freelancer.objects.get(admin=freelancer_id)
@@ -409,14 +409,14 @@ def soft_delete_freelancer(request, freelancer_id):
 
 
 # Function to create candidate page.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def add_candidate(request):
     return render(request, 'admin-panel/create-candidate.html')
 
 
 # Function to save candidate details.
-@login_required(login_url="login")
+@login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def save_candidate(request):
     if request.method == 'POST':
