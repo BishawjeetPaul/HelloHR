@@ -12,7 +12,11 @@ urlpatterns = [
     # path to login page.
 	path('login/',views.login_page, name='login'),
     # path to admin change password.
-    path('admin/change-password', views.change_password, name='change-password'),
+    path('admin/change/password', views.change_password, name='change-password'),
+    # path to match old password.
+    path('admin/match/password', views.match_old_password, name='match-password'),
+    # path to match old password.
+    path('admin/update/password', views.update_new_password, name='match-password'),
     # path to create CompanyHR account page.
     path('admin/create/companyHR',adminViews.add_company_hr, name='add-company-hr'),
     # path to manage CompanyHR account page.
