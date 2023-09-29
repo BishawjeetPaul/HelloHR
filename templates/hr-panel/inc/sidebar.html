@@ -11,17 +11,22 @@
              Accounts
         </li>
         <li>
-            <a href="#">
-                Candidate
+            <a href="{% url 'adminPanel:hr-candidate-manage' %}">
+                All Candidate
             </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:hr-candidate-manage' %}">
-                        Manage Candidate
-                    </a>
-                </li>
-                
-            </ul>
+            
+        </li>
+        <li>
+            <a href="{% url 'adminPanel:hr-candidate-selected' %}">
+                Selected Candidate
+            </a>
+            
+        </li>
+        <li>
+            <a href="{% url 'adminPanel:hr-candidate-rejected' %}">
+                Rejected Candidate
+            </a>
+            
         </li>
         
     </ul>

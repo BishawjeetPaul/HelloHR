@@ -59,6 +59,9 @@ urlpatterns = [
 	path('hr/dashboard',hrViews.dashboard, name='hr-dashboard'),
     path('hr/candidate/detail',hrViews.candidate_detail, name='hr-candidate-detail'),
     path('hr/candidate/manage',hrViews.candidate_manage, name='hr-candidate-manage'),
+    path('hr/candidate/selected',hrViews.candidate_selected, name='hr-candidate-selected'),
+    path('hr/candidate/rejected',hrViews.candidate_rejected, name='hr-candidate-rejected'),
+
     # ---------------------------- BACKEND -------------------------------- |
 
 
