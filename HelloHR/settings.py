@@ -26,7 +26,7 @@ with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False #True
 
-ALLOWED_HOSTS = ['hellohr.info', 'www.hellohr.info']
+ALLOWED_HOSTS = ['139.59.24.186', 'hellohr.info', 'www.hellohr.info']
 
 
 # Application definition
