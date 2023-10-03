@@ -24,9 +24,9 @@ with open(os.path.join(BASE_DIR, 'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #True
+DEBUG = True #True
 
-ALLOWED_HOSTS = ['139.59.24.186', 'hellohr.info', 'www.hellohr.info']
+ALLOWED_HOSTS = ['64.227.162.194', 'hellohr.info', 'www.hellohr.info']
 
 
 # Application definition
@@ -155,9 +155,9 @@ AUTH_USER_MODEL='adminPanel.CustomUser'
 AUTHENTICATION_BACKENDS = ['adminPanel.EmailBackEnd.EmailBackEnd']
 
 # HTTPS Setyings
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 
 STORAGES = {
     # ...
