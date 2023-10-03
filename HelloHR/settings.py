@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "whitenoise.runserver_nostatic",
+    # "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     'adminPanel',
     'webpages'
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    # "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -155,13 +155,13 @@ AUTH_USER_MODEL='adminPanel.CustomUser'
 AUTHENTICATION_BACKENDS = ['adminPanel.EmailBackEnd.EmailBackEnd']
 
 # HTTPS Setyings
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-SECURE_SSL_REDIRECT = False
+# SESSION_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
+# SECURE_SSL_REDIRECT = False
 
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     # ...
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
