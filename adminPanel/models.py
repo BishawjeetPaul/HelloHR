@@ -2,11 +2,13 @@ from django.contrib.auth.models import AbstractUser # Use to create customuser.
 from django.db import models
 from django.dispatch import receiver # Use to create receiver to a signals.
 from django.db.models.signals import post_save # Use to save signals.
+import uuid
 
 
 
 # For user type.
 class CustomUser(AbstractUser):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_type_data = ((1,'Admin'),(2,'CompanyHR'), (3,'Staff'), (4, 'Freelancer'))
     create_type_data = ((1, 'OWN'),(2, 'Admin'))
     user_type = models.CharField(default=1, choices=user_type_data, max_length=10)
@@ -16,7 +18,7 @@ class CustomUser(AbstractUser):
 
 # For Admin.
 class AdminHOD(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
@@ -30,7 +32,7 @@ class CompanyHR(models.Model):
         ('F', 'F'), # Female
         ('O', 'O'), # Other
     )
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     hr_email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
@@ -52,7 +54,7 @@ class Staffs(models.Model):
         ('F', 'F'), # Female
         ('O', 'O'), # Other
     )
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     staff_email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
@@ -74,7 +76,7 @@ class Freelancer(models.Model):
         ('F', 'F'), # Female
         ('O', 'O'), # Other
     )
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     freelancer_email = models.CharField(max_length=30)
     mobile_no = models.CharField(max_length=10)
@@ -104,7 +106,7 @@ class Candidate(models.Model):
         (4, 'Freelancer'), # Freelancer
         (5, 'Referal') # In referal link
     )
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=30)
@@ -130,7 +132,7 @@ class Candidate(models.Model):
 
 # For Candidate address.
 class CandidateAddress(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     candidate = models.OneToOneField(Candidate, on_delete=models.CASCADE)
     street_address = models.CharField(max_length=50)
     street_address_line_2 = models.CharField(max_length=50)

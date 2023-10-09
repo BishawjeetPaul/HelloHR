@@ -8,6 +8,7 @@ django = "*"
 mysqlclient = "*"
 django-htmlmin = "*"
 whitenoise = "*"
+django-uuidfield = "*"
 
 [dev-packages]
 
