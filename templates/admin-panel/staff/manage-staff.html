@@ -8,14 +8,11 @@
     <div class="app-page-title">
         <div class="page-title-wrapper">
             <div class="page-title-heading">
-                
-                <div>Manage All HR Account
-                    <div class="page-title-subheading">This is where you can take action related to staff account and filter it
-                        
-                    </div>
-                </div>
+                <span>MANAGE ALL STAFF ACCOUNT</span>
             </div>
-
+            <div class="page-title-actions">
+                <h5>Hii</h5>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -88,17 +85,19 @@
                         <thead>
                             <tr>
                                 <th class="text-center">SL No</th>
-                                <th>Name</th>
-                                <th class="text-center">City</th>
-                                <th class="text-center">Status</th>
+                                <th class="text-center">First Name</th>
+                                <th class="text-center">Last Name</th>
+                                <th class="text-center">User email</th>
+                                <th class="text-center">Username</th>
+                                <th class="text-center">Login ID</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for st in staffs %}
                             <tr>
-                                <td class="text-center text-muted">{{ forloop.counter }}</td>
-                                <td>
+                                <td class="text-center text-muted p-0">{{ forloop.counter }}</td>
+                                <td class="text-center p-0">
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-3">
@@ -109,18 +108,18 @@
                                             </div>
                                             <div class="widget-content-left flex2">
                                                 <div class="widget-heading">{{ st.admin.first_name }}</div>
-                                                {% comment %} <div class="widget-subheading opacity-7">Web Developer</div> {% endcomment %}
+                                                <!-- <div class="widget-subheading opacity-7">Web Developer</div> -->
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center">{{ st.admin.last_name }}</td>
-                                <td class="text-center">
-                                    {{ st.hr_email }}
+                                <td class="text-center p-0">{{ st.admin.last_name }}</td>
+                                <td class="text-center p-0">
+                                    {{ st.staff_email }}
                                 </td>
-                                <td class="text-center">{{ st.admin.username }}</td>
-                                <td class="text-center text-danger">{{ st.admin.email }}</td>
-                                <td class="text-center">
+                                <td class="text-center p-0">{{ st.admin.username }}</td>
+                                <td class="text-center p-0 text-danger">{{ st.admin.email }}</td>
+                                <td class="text-center p-0">
                                     <div class="d-block text-center">
                                         <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'adminPanel:delete-staff' st.admin.id %}">Delete</a></button>
                                         <button class="btn-wide btn btn-success"><a href="{% url 'adminPanel:update-staff' st.admin.id %}">Edit</a></button>

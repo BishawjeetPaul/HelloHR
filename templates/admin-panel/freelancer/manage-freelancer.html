@@ -8,66 +8,11 @@
     <div class="app-page-title">
         <div class="page-title-wrapper">
             <div class="page-title-heading">
-                
-                <div>Manage All HR Account
-                    <div class="page-title-subheading">This is where you can take action related to freelancer account and filter it
-                        
-                    </div>
-                </div>
+                <span>MANAGE ALL <b>FREELACER ACCOUNT</b></span>
             </div>
-            
-                <button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom"
-                    class="btn-shadow mr-3 btn btn-dark">
-                    <i class="fa fa-star"></i>
-                </button>
-                <div class="d-inline-block dropdown">
-                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        class="btn-shadow dropdown-toggle btn btn-info">
-                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                            <i class="fa fa-business-time fa-w-20"></i>
-                        </span>
-                        Buttons
-                    </button>
-                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a href="javascript:void(0);" class="nav-link">
-                                    <i class="nav-link-icon lnr-inbox"></i>
-                                    <span>
-                                        Inbox
-                                    </span>
-                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="javascript:void(0);" class="nav-link">
-                                    <i class="nav-link-icon lnr-book"></i>
-                                    <span>
-                                        Book
-                                    </span>
-                                    <div class="ml-auto badge badge-pill badge-danger">5</div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="javascript:void(0);" class="nav-link">
-                                    <i class="nav-link-icon lnr-picture"></i>
-                                    <span>
-                                        Picture
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a disabled href="javascript:void(0);" class="nav-link disabled">
-                                    <i class="nav-link-icon lnr-file-empty"></i>
-                                    <span>
-                                        File Disabled
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div> -->
+            <div class="page-title-actions">
+                <h5>Hii</h5>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -140,17 +85,19 @@
                         <thead>
                             <tr>
                                 <th class="text-center">SL No</th>
-                                <th>Name</th>
-                                <th class="text-center">City</th>
-                                <th class="text-center">Status</th>
+                                <th class="text-center">First Name</th>
+                                <th class="text-center">Last Name</th>
+                                <th class="text-center">User email</th>
+                                <th class="text-center">Username</th>
+                                <th class="text-center">Login ID</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for fl in freelancers %}
+                            {% for frln in freelancers %}
                             <tr>
-                                <td class="text-center text-muted">{{ forloop.counter }}</td>
-                                <td>
+                                <td class="text-center text-muted p-0">{{ forloop.counter }}</td>
+                                <td class="text-center p-0">
                                     <div class="widget-content p-0">
                                         <div class="widget-content-wrapper">
                                             <div class="widget-content-left mr-3">
@@ -160,22 +107,22 @@
                                                 </div>
                                             </div>
                                             <div class="widget-content-left flex2">
-                                                <div class="widget-heading">{{ fl.admin.first_name }}</div>
-                                                {% comment %} <div class="widget-subheading opacity-7">Web Developer</div> {% endcomment %}
+                                                <div class="widget-heading">{{ frln.admin.first_name }}</div>
+                                                <!-- <div class="widget-subheading opacity-7">Web Developer</div> -->
                                             </div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="text-center">{{ fl.admin.last_name }}</td>
-                                <td class="text-center">
-                                    {{ fl.hr_email }}
+                                <td class="text-center p-0">{{ frln.admin.last_name }}</td>
+                                <td class="text-center p-0">
+                                    {{ frln.freelancer_email }}
                                 </td>
-                                <td class="text-center">{{ fl.admin.username }}</td>
-                                <td class="text-center text-danger">{{ fl.admin.email }}</td>
-                                <td class="text-center">
+                                <td class="text-center p-0">{{ frln.admin.username }}</td>
+                                <td class="text-center p-0 text-danger">{{ frln.admin.email }}</td>
+                                <td class="text-center p-0">
                                     <div class="d-block text-center">
-                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'adminPanel:delete-freelancer' fl.admin.id %}">Delete</a></button>
-                                        <button class="btn-wide btn btn-success"><a href="{% url 'adminPanel:update-freelancer' fl.admin.id %}">Edit</a></button>
+                                        <button class="btn-icon btn-icon-only btn btn-outline-danger"><a href="{% url 'adminPanel:delete-freelancer' frln.admin.id %}">Delete</a></button>
+                                        <button class="btn-wide btn btn-success"><a href="{% url 'adminPanel:update-freelancer' frln.admin.id %}">Edit</a></button>
                                     </div>
                                 </td>
                             </tr>
@@ -183,7 +130,6 @@
                         </tbody>
                     </table>
                 </div>
-                
             </div>
         </div>
     </div>

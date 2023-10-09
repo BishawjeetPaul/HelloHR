@@ -5,8 +5,9 @@ from . import freelancerViews, views, adminViews, hrViews, staffViews, freelance
 app_name = 'adminPanel'
 
 urlpatterns = [
-    # =============ADMIN-URL-PATH============ |
+    # ==========================ADMIN-URL-PATH============================== |
     # ---------------------------- FRONTEND -------------------------------- |
+
 	# path to dashboard page.
 	path('admin/dashboard',adminViews.dashboard, name='admin-dashboard'),
     # path to login page.
@@ -14,9 +15,7 @@ urlpatterns = [
     # path to admin change password.
     path('admin/change/password', views.change_password, name='change-password'),
     # path to match old password.
-    path('admin/match/password', views.match_old_password, name='match-password'),
-    # path to match old password.
-    path('admin/update/password', views.update_new_password, name='match-password'),
+    path('admin/update/password', views.update_new_password, name='update-password'),
     # path to create CompanyHR account page.
     path('admin/create/companyHR',adminViews.add_company_hr, name='add-company-hr'),
     # path to manage CompanyHR account page.
@@ -37,7 +36,13 @@ urlpatterns = [
     path('admin/update/freelancer/<str:freelancer_id>', adminViews.update_freelancer, name='update-freelancer'),
     # path to add Candidate page.
     path('admin/candidate/add', adminViews.add_candidate, name='add-candidate'),
+
     # ---------------------------- BACKEND -------------------------------- |
+
+    # path to match old password.
+    path('admin/match/password', views.match_old_password, name='match-password'),
+    # path to save update password.
+    path('admin/save/update/password', views.update_save_new_password, name='update-save-password'),
     # path to save CompanyHR account.
     path('admin/save/companyHR', adminViews.save_company_hr, name='save-company-hr'),
     # path to save update CompanyHR account.
@@ -57,34 +62,69 @@ urlpatterns = [
     # path to delete Freelancer account.
     path('admin/delete/freelancer/<str:freelancer_id>', adminViews.soft_delete_freelancer, name='delete-freelancer'),
 
-    # =============HR-URL-PATH============ |
-    # ---------------------------- FRONTEND ------------------------------- |
+    # ===========================HR-URL-PATH=============================== |
+    # --------------------------- FRONTEND -------------------------------- |
+
     # path to dashboard page.
 	path('hr/dashboard',hrViews.dashboard, name='hr-dashboard'),
+    # path to candidate detail.
     path('hr/candidate/detail',hrViews.candidate_detail, name='hr-candidate-detail'),
+    # path to manage candidate.
     path('hr/candidate/manage',hrViews.candidate_manage, name='hr-candidate-manage'),
+    # path to selecte candidate.
     path('hr/candidate/selected',hrViews.candidate_selected, name='hr-candidate-selected'),
+    # path to reject candidate.
     path('hr/candidate/rejected',hrViews.candidate_rejected, name='hr-candidate-rejected'),
+    # path to change hr password.
+    path('hr/change/password', hrViews.change_password, name='hr-change-password'),
+    # path to update hr password.
+    path('hr/update/password', hrViews.update_new_password, name='hr-update-password'),
 
     # ---------------------------- BACKEND -------------------------------- |
 
+    # path to match hr old password.
+    path('hr/match/password', hrViews.match_old_password, name='hr-match-password'),
+    # path to save update hr password.
+    path('hr/save/update/password', hrViews.update_save_new_password, name='hr-update-save-password'),
 
-    # =============STAFF-URL-PATH============ |
+
+    # ==========================STAFF-URL-PATH============================= |
     # ---------------------------- FRONTEND ------------------------------- |
+
     # path to dashboard page.
 	path('staff/dashboard',staffViews.dashboard, name='staff-dashboard'),
+    # path to change staff password.
+    path('staff/change/password', staffViews.change_password, name='staff-change-password'),
+    # path to update staff password.
+    path('staff/update/password', staffViews.update_new_password, name='staff-update-password'),
+    # path to candidate submission page.
 	path('staff/candidate/submission',staffViews.candidate_submission, name='staff-candidate-submission'),
 
 
     # ---------------------------- BACKEND -------------------------------- |
 
-    # =============FREELANCER-URL-PATH============ |
+    # path to match staff old password.
+    path('staff/match/password', staffViews.match_old_password, name='staff-match-password'),
+    # path to save update staff password.
+    path('staff/save/update/password', staffViews.update_save_new_password, name='staff-update-save-password'),
+
+    # ========================FREELANCER-URL-PATH========================== |
     # ---------------------------- FRONTEND ------------------------------- |
+
     # path to dashboard page.
 	path('freelancer/dashboard',freelancerViews.dashboard, name='freelancer-dashboard'),
+    # path to change freelancer password.
+    path('freelancer/change/password', freelancerViews.change_password, name='freelancer-change-password'),
+    # path to update freelancer password.
+    path('freelancer/update/password', freelancerViews.update_new_password, name='freelancer-update-password'),
+    # path to candidate submission.
 	path('freelancer/candidate/submission',freelancerViews.candidate_submission, name='freelancer-candidate-submission'),
 
-
     # ---------------------------- BACKEND -------------------------------- |
+
+    # path to match freelancer old password.
+    path('freelancer/match/password', freelancerViews.match_old_password, name='freelancer-match-password'),
+    # path to save update freelancer password.
+    path('freelancer/save/update/password', freelancerViews.update_save_new_password, name='freelancer-update-save-password'),
 
 ]

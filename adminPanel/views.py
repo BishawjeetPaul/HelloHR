@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
+from django.urls import reverse # Reverse the function url.
+from django.http import HttpResponse, HttpResponseRedirect # Redirect the function urls
+from django.contrib.auth import login, logout
 from django.contrib import messages # Return messages.
 from django.contrib.auth.decorators import login_required # Login required to access private pages.
 from django.views.decorators.cache import cache_control # Destroy the section after logout.
-from adminPanel.EmailBackEnd import EmailBackEnd
-from .models import CustomUser
+from adminPanel.EmailBackEnd import EmailBackEnd # Used to login with user email ID.
+from django.contrib.auth.hashers import check_password # Check logged-in user password.
 
 
 
@@ -57,40 +57,50 @@ def change_password(request):
     return render(request, 'admin-panel/change-password.html')
 
 
-
-# This function is used to match Admin password:
+# This function is used to match admin password.
 @login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def match_old_password(request):
+    user = request.user
+    print(user.password)
     if request.method == 'POST':
-        old_password = request.POST.get('old_password')
-        new_password = request.POST.get('new_password')
-        new_confirm_password = request.POST.get('new_confirm_password')
+        old_password = request.POST['old_password']
 
-        user = CustomUser.objects.get(id=request.user)
-
-        # Check if the current password is valid.
-        if user.password(old_password):
-            messages.error(request, 'Old password is incorrect.')
-            return HttpResponseRedirect(reverse('adminPanel:change-password'))
-        
-        # Check if the new password and confirmation match.
-        if new_password != new_confirm_password:
-            messages.error(request, 'New password or confirm password not match.')
-            return HttpResponseRedirect('adminPanel:change-password')
-        
-        # Set the new password and update the session auth hash
-        user.password(new_password)
-        user.save()
-        update_session_auth_hash(request, user)
-
-        messages.success(request, 'Password changed successfully.')
-        return HttpResponseRedirect('adminPanel:login')
+    # Check if the current password is valid.
+    if not check_password(old_password, user.password):
+        messages.error(request, 'Old password is incorrect.')
+        return HttpResponseRedirect(reverse('adminPanel:change-password'))
+    
+    return HttpResponseRedirect(reverse('adminPanel:update-password'))
     
 
-
-# This function to update Admin new password:
+# This function is used to update Admin password:
 @login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def update_new_password(request):
-    pass
+    return render(request, 'admin-panel/match-password.html')
+    
+
+# This function to update save Admin new password:
+@login_required(login_url="adminPanel:login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def update_save_new_password(request):
+    user = request.user
+    if request.method == 'POST':
+        new_password = request.POST['new_password']
+        new_confirm_password = request.POST['new_confirm_password']
+        print(new_password)
+        print(new_confirm_password)
+        
+        # Check if the new password and confirmation match.
+        if new_password != new_confirm_password:
+            messages.error(request, 'New password do not match.')
+            return HttpResponseRedirect(reverse('adminPanel:update-password'))
+        
+        # Set the new password and update the session auth hash
+        user.set_password(new_password)
+        user.save()
+
+        messages.success(request, 'Password changed successfully.')
+        return HttpResponseRedirect(reverse('adminPanel:admin-dashboard'))
+    

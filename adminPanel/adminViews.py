@@ -163,6 +163,7 @@ def save_staff(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
+        staff_email = request.POST.get('staff_email')
         username = request.POST.get('username')
         mobile_no = request.POST.get('mobile_no')
         address = request.POST.get('address')
@@ -192,7 +193,7 @@ def save_staff(request):
                 create_type=1
             )
 
-            user.staff.hr_email=email
+            user.staff.staff_email=email
             user.staff.mobile_no=mobile_no
             user.staff.address=address
             user.staff.gender=gender
@@ -220,12 +221,12 @@ def manage_staff(request):
 @login_required(login_url="adminPanel:login")
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def update_staff(request, staff_id):
-    staff = CompanyHR.objects.get(admin=staff_id)
+    staff = Staffs.objects.get(admin=staff_id)
     context = {
         'staff': staff,
         'id': staff_id,
     }
-    return render(request, 'admin-panel/staff/update-staff.html')
+    return render(request, 'admin-panel/staff/update-staff.html', context)
 
 
 # Function to save update Staff account.
@@ -322,7 +323,7 @@ def save_freelancer(request):
                 create_type=1
             )
 
-            user.freelancer.hr_email=email
+            user.freelancer.freelancer_email=email
             user.freelancer.mobile_no=mobile_no
             user.freelancer.address=address
             user.freelancer.gender=gender
