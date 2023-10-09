@@ -64,7 +64,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
 ]
 
-SESSION_COOKIE_AGE = 120  # 2 minutes in seconds
+# SESSION_COOKIE_AGE = 120  # 2 minutes in seconds
 
 SESSION_SAVE_EVERY_REQUEST = True # This will ensure that the session is updated with the last activity timestamp on every request.
 

@@ -1,140 +1,91 @@
 {% load static %}
 
-<div class="app-sidebar__inner">
+<div class="app-sidebar__inner mt-3">
     <ul class="vertical-nav-menu">
         <li>
             <a href="{% url 'adminPanel:admin-dashboard' %}" class="mm-active">
                 Dashboard
             </a>
         </li>
-        <li class="app-sidebar__heading">
-            User Accounts
-        </li>
+        <!-- Profile Image -->
+        <div class="profile mt-0 mb-0">
+            <!-- <div class="profile-img">
+                <a href="#" class="brand-link">
+                    <img src="#" alt=""> &nbsp;
+                </a>
+            </div> -->
+            <br>
+            <div class="name">
+                <span class="d-block"><b class="btn btn-primary btn-block">{{user.username}}</b></span>
+                <img src="" alt="">
+            </div>
+        </div>
+        <!-- //Profile Image -->
+        <hr class="mt-0">
         <li>
-            <a href="#">
-                HR
-            </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:add-company-hr' %}">
-                        Create Account
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'adminPanel:manage-compay-hr' %}">
-                        Manage Account
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                Staff
-            </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:add-staff' %}">
-                        
-                        Create Account
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'adminPanel:manage-staff' %}">
-                        
-                       Manage Account
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                
-                Freelancer
-                
-            </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:add-freelancer' %}">
-                        
-                        Create Account
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'adminPanel:manage-freelancer' %}">
-                        
-                        Manage Account
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
-        <li>
-            <a href="#">
-                
-                Candidates
-                
-            </a>
-            <ul>
-                <li>
-                    <a href="{% url 'adminPanel:add-candidate' %}">
-                        
-                        Add Candidate
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        
-                        Manage Candidate
-                    </a>
-                </li>
-                
-            </ul>
-        </li>
-        
-        
-        <!-- <li class="app-sidebar__heading">Widgets</li>
-        <li>
-            <a href="dashboard-boxes.html">
-                <i class="metismenu-icon pe-7s-display2"></i>
-                Dashboard Boxes
-            </a>
-        </li>
-        <li class="app-sidebar__heading">Forms</li>
-        <li>
-            <a href="forms-controls.html">
-                <i class="metismenu-icon pe-7s-mouse">
-                </i>Forms Controls
+            {% url 'adminPanel:add-company-hr' as add_hr %}
+            <a href="{{add_hr}}" class="{% if request.path == add_hr %} active {% endif %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Add HR
             </a>
         </li>
         <li>
-            <a href="forms-layouts.html">
-                <i class="metismenu-icon pe-7s-eyedropper">
-                </i>Forms Layouts
+            <a href="{% url 'adminPanel:manage-compay-hr' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Manage HR
             </a>
         </li>
         <li>
-            <a href="forms-validation.html">
-                <i class="metismenu-icon pe-7s-pendrive">
-                </i>Forms Validation
+            <a href="{% url 'adminPanel:add-staff' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Add Staff
             </a>
         </li>
-        <li class="app-sidebar__heading">Charts</li>
         <li>
-            <a href="charts-chartjs.html">
-                <i class="metismenu-icon pe-7s-graph2">
-                </i>ChartJS
+            <a href="{% url 'adminPanel:manage-staff' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Manage Staff
             </a>
         </li>
-        <li class="app-sidebar__heading">PRO Version</li>
         <li>
-            <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/"
-                target="_blank">
-                <i class="metismenu-icon pe-7s-graph2">
-                </i>
-                Upgrade to PRO
+            <a href="{% url 'adminPanel:add-freelancer' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Add Freelancer
             </a>
-        </li> -->
+        </li>
+        <li>
+            <a href="{% url 'adminPanel:manage-freelancer' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Manage Freelancer
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'adminPanel:add-candidate' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Add Candidate
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'adminPanel:manage-candidate' %}">
+                <span class="icon">
+                    <i class="ri-add-line"></i>
+                </span>
+                Manage Candidate
+            </a>
+        </li>
     </ul>
 </div>

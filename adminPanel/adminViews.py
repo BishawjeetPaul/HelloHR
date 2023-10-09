@@ -163,7 +163,6 @@ def save_staff(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
-        staff_email = request.POST.get('staff_email')
         username = request.POST.get('username')
         mobile_no = request.POST.get('mobile_no')
         address = request.POST.get('address')
@@ -193,11 +192,11 @@ def save_staff(request):
                 create_type=1
             )
 
-            user.staff.staff_email=email
-            user.staff.mobile_no=mobile_no
-            user.staff.address=address
-            user.staff.gender=gender
-            user.staff.birth_date=birth_date
+            user.staffs.staff_email=email
+            user.staffs.mobile_no=mobile_no
+            user.staffs.address=address
+            user.staffs.gender=gender
+            user.staffs.birth_date=birth_date
             user.save()
             messages.success(request, 'Successfully Added Staff')
             return HttpResponseRedirect(reverse('adminPanel:add-staff'))
@@ -477,3 +476,10 @@ def save_candidate(request):
         except:
             messages.error(request, 'Oops something wrong')
             return HttpResponseRedirect(reverse('adminPanel:add-candidate'))
+
+
+# Function to manage candidate details.
+@login_required(login_url="adminPanel:login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def manage_candidate(request):
+    pass

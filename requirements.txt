@@ -1,0 +1,146 @@
+<div class="app-sidebar__inner">
+    <!-- Profile Image -->
+    <div class="profile">
+        <div class="profile-img">
+            <a href="#" class="brand-link">
+                <img src="#" alt=""> &nbsp;
+            </a>
+        </div>
+        <div class="name">
+            <a href="#" class="d-block">{{user.username}}</a>
+            <img src="" alt="">
+        </div>
+    </div>
+    <!-- //Profile Image -->
+    <hr>
+    <!-- Menu -->
+    <div class="menu">
+        <!-- {% url 'sms_app:admin-home-view' as admin_home %} -->
+        <!-- class="{% if request.path == admin_home %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-home-4-line"></i>
+            </span>
+            Home
+        </a>
+
+        <!-- {% url 'sms_app:add-staff-view' as add_staff %} -->
+        <!-- class="{% if request.path == add_staff %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-add-line"></i>
+            </span>
+            Add Staff
+        </a>
+        <!-- {% url 'sms_app:manage-staff-view' as manage_staff %} -->
+        <!-- {% url 'sms_app:edit-staff-view' staff_id=id as edit_staff %} -->
+        <!-- class="{% if request.path == manage_staff %} active {% endif %} {% if request.path == edit_staff %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-edit-line"></i>
+            </span>	
+            Manage Staff
+        </a>
+        <!-- {% url 'sms_app:add-student-view' as add_student %} -->
+        <!-- class="{% if request.path == add_student %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-add-line"></i>
+            </span>	
+            Add Student
+        </a>
+        <!-- {% url 'sms_app:manage-student-view' as manage_student %}
+        {% url 'sms_app:edit-student-view' student_id=id as edit_student %} -->
+        <!-- class="{% if request.path == manage_student %} active {% endif %} {% if request.path == edit_student %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-edit-line"></i>
+            </span>	
+            Manage Student
+        </a>
+        <!-- {% url 'sms_app:add-course-view' as add_course %} -->
+        <!-- class="{% if request.path == add_course %} active {% endif %} -->
+         <a href="#">
+            <span class="icon">
+                <i class="ri-add-line"></i>
+            </span>	
+            Add Course
+        </a>
+        <!-- {% url 'sms_app:manage-course-view' as manage_course %}
+        {% url 'sms_app:edit-course-view' course_id=id as edit_course %} -->
+        <!-- class="{% if request.path == manage_course %} active {% endif %} {% if request.path == edit_course %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-edit-line"></i>
+            </span>	
+            Manage Course
+        </a>
+        <!-- {% url 'sms_app:add-subject-view' as add_subject %} -->
+        <!-- class="{% if request.path == add_subject %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-add-line"></i>
+            </span>	
+            Add Subject
+        </a>
+        <!-- {% url 'sms_app:manage-subject-view' as manage_subject %}
+        {% url 'sms_app:edit-subject-view' subject_id=id as edit_subject %} -->
+        <!-- class="{% if request.path == manage_subject %} active {% endif %} {% if request.path == edit_subject %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-edit-line"></i>
+            </span>	
+            Manage Subject
+        </a>
+        <!-- {% url 'sms_app:add-session-view' as add_session %} -->
+        <!-- class="{% if request.path == add_session %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-add-line"></i>
+            </span>	
+            Add Session Year
+        </a>
+        <!-- {% url 'sms_app:student-feedback-message-view' as student_feedback %}
+        {% url 'sms_app:student-reply' student_id=id as student_id %} -->
+        <!-- class="{% if request.path == student_feedback %} active {% endif %} {% if request.path == student_id %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-feedback-fill"></i>
+            </span>	
+            Student Feedback
+        </a>
+        <!-- {% url 'sms_app:staff-feedback-message-view' as staff_feedback %} -->
+        <!-- class="{% if request.path == staff_feedback %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-feedback-line"></i>
+            </span>	
+            Staff Feedback
+        </a>
+        <!-- {% url 'sms_app:student-leave-view' as student_leave %} -->
+        <!-- class="{% if request.path == student_leave %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-user-shared-fill"></i>
+            </span>	
+            Student Leave
+        </a>
+        <!-- {% url 'sms_app:staff-leave-view' as staff_leave %} -->
+        <!-- class="{% if request.path == staff_leave %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-user-shared-line"></i>
+            </span>	
+            Staff Leave
+        </a>
+        <!-- {% url 'sms_app:admin-attendance-view' as attendance_view %} -->
+        <!-- class="{% if request.path == attendance_view %} active {% endif %}" -->
+        <a href="#">
+            <span class="icon">
+                <i class="ri-book-open-fill"></i>
+            </span>	
+            View Attendance
+        </a>
+    </div>
+    <!-- //Menu -->
+</div>

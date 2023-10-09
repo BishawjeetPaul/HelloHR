@@ -36,6 +36,8 @@ urlpatterns = [
     path('admin/update/freelancer/<str:freelancer_id>', adminViews.update_freelancer, name='update-freelancer'),
     # path to add Candidate page.
     path('admin/candidate/add', adminViews.add_candidate, name='add-candidate'),
+    # path to manage candidate page.
+    path('admin/manage/candidate', adminViews.manage_candidate, name='manage-candidate'),
 
     # ---------------------------- BACKEND -------------------------------- |
 
