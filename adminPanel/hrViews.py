@@ -94,4 +94,4 @@ def update_save_new_password(request):
         user.save()
 
         messages.success(request, 'Password changed successfully.')
-        return HttpResponseRedirect(reverse('adminPanel:hr-dashboard'))
+        return HttpResponseRedirect(reverse('adminPanel:login'))
