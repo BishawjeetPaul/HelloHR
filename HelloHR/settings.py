@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASS = [
     "django.middleware.security.SecurityMiddleware",
     # "whitenoise.middleware.WhiteNoiseMiddleware",
+    "adminPanel.AutoLogoutMiddleWare.AutoLogoutMiddleware",  # Use for autologout user middleware.
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -56,6 +57,16 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "adminPanel.LoginCheckMiddleWare.LoginCheckMiddleWare",
 ]
+
+MIDDLEWARE = [
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+]
+
+SESSION_COOKIE_AGE = 120  # 2 minutes in seconds
+
+SESSION_SAVE_EVERY_REQUEST = True # This will ensure that the session is updated with the last activity timestamp on every request.
 
 ROOT_URLCONF = "HelloHR.urls"
 
