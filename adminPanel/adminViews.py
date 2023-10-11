@@ -483,3 +483,10 @@ def save_candidate(request):
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def manage_candidate(request):
     pass
+
+
+# Function to view user profile details.
+@login_required(login_url="adminPanel:login")
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+def user_profile(request):
+    return render(request, 'admin-panel/user-profile.html')

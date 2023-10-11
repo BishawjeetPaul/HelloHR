@@ -45,9 +45,9 @@
                                 
                             </a>
                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                <button type="button" tabindex="0" class="dropdown-item">Update Profile</button>
+                                <a href="{% url 'adminPanel:admin-profile' %}" tabindex="0" class="dropdown-item">Update Profile</a>
                                 <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                <a href="{% url 'adminPanel:change-password' %}" type="button" tabindex="0" class="dropdown-item">Change Password</a>
+                                <a href="{% url 'adminPanel:change-password' %}" tabindex="0" class="dropdown-item">Change Password</a>
                             </div>
                         </div>
                     </div>

@@ -38,6 +38,8 @@ urlpatterns = [
     path('admin/candidate/add', adminViews.add_candidate, name='add-candidate'),
     # path to manage candidate page.
     path('admin/manage/candidate', adminViews.manage_candidate, name='manage-candidate'),
+    # path to view user profile page.
+    path('admin/profile', adminViews.user_profile, name='admin-profile'),
 
     # ---------------------------- BACKEND -------------------------------- |
 
